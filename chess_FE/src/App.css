@@ -1,0 +1,124 @@
+body{
+  font-family: sans-serif;
+  background-color: #1e1f21;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+
+.Logo{
+  position: relative;
+  display:inline-block;
+  text-decoration: none;
+  height: 250px;
+  width: 400px;
+  color: #fff;
+  border-radius: .125em;
+  background-image: url('./assets/pictures/rook-chess-sport-logo_330148-44.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation-play-state: running;
+}
+
+.Logo::after{
+  content:'';
+  position: absolute;
+  z-index: -1;
+  top: -.125em;
+  left: -.125em;
+  width: calc(100% + .25em);
+  height: calc(100% + .25em);
+  border-radius: .25em;
+  background-image: linear-gradient(45deg,blue, yellow);
+  background-size: 200%;
+  animation: animateborder 4s infinite;
+}
+
+@keyframes animateborder {
+  0% {
+    background-position: 0%;
+}
+50% {
+    background-position: 100%;
+}
+100% {
+    background-position: 0%;
+}
+}
+
+
+.Header,.Main,.Footer,.users_btn{
+  color:white;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 6px;
+}
+
+.PlayButton{
+  position: relative;
+  padding: 5px;
+  display:inline-block;
+  padding: 1em 2em;
+  text-decoration: none;
+  color: #fff;
+  width: 200px;
+  height: 50px;
+  background-color: black;
+  border: 2px;
+  animation-play-state: running;
+  font-size: 15px;
+}
+
+.PlayButton::after{
+  content:'';
+  position: absolute;
+  z-index: -1;
+  top: -.125em;
+  left: -.125em;
+  width: calc(100% + .25em);
+  height: calc(100% + .25em);
+  border-radius: .25em;
+  background-image: linear-gradient(90deg,blue, yellow);
+  background-size: 200%;
+  animation: animateborder 3s infinite;
+}
+
+.Main{
+  display: flex;
+}
+.users_btn{
+ width: 200px;
+  box-shadow: 0 9px rgba(0, 0, 0, 0.5);   
+  -webkit-transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.users_btn:hover{
+  -webkit-transform: translatey(4px);
+  transform: translatey(4px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5)
+}
+
+.Desk{
+  width: calc(64px * 8);
+  height: calc(64px * 8);
+  display: flex;
+  flex-wrap: wrap;
+}
+.Tile{
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.white{
+  background-color: rgb(157, 175, 157);
+}
+
+.black{
+  background-color: rgb(125, 175, 125);
+}
