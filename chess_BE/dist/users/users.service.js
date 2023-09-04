@@ -8,8 +8,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersService = void 0;
 const common_1 = require("@nestjs/common");
+const DataBase_1 = require("../DataBase");
 let UsersService = exports.UsersService = class UsersService {
-    Register(data) {
+    async Register(User) {
+        const doc = (await (0, DataBase_1.getDataCurrent)('users', User.Email)).doc;
+        const docRef = (await (0, DataBase_1.getDataCurrent)('users', User.Email)).docRef;
+        if ((await doc).exists) {
+            return console.log('unreg');
+        }
+        else {
+            User.CreateDate = new Date;
+            docRef.set(User);
+            return console.log('reg');
+        }
+    }
+    async Login(User) {
+        const doc = (await (0, DataBase_1.getDataCurrent)('users', User.Email)).doc;
+        const docRef = (await (0, DataBase_1.getDataCurrent)('users', User.Email)).docRef;
+        let data = await doc.data();
+        if ((await doc).exists) {
+            if ((User.Email == data.Email) && (User.Password == data.Password)) {
+                return console.log("Succses");
+            }
+            else {
+                return console.log("Invalid input data");
+            }
+        }
+        else {
+            return console.log("Invalid input data");
+        }
     }
 };
 exports.UsersService = UsersService = __decorate([

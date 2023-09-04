@@ -4,3 +4,8 @@ export class userdata {
     Username:String
     CreateDate:Date
 }
+
+export class logindata{
+    Email:String
+    Password:String
+}

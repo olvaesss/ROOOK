@@ -1,4 +1,5 @@
-import { userdata } from './dto/userdata';
+import { logindata, userdata } from './dto/userdata';
 export declare class UsersService {
-    Register(data: userdata): void;
+    Register(User: userdata): Promise<void>;
+    Login(User: logindata): Promise<void>;
 }
