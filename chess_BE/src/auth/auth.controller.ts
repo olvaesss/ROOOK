@@ -1,11 +1,13 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get } from '@nestjs/common';
 import { AuthService } from './auth.service';
+import { userdata } from 'src/users/dto/userdata';
 
 @Controller('users/auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
   @Get('')
-  index(){
+  index(@Body() data:userdata){
+    this.authService.GiveTokens(data)
     return 'index page'
   }
 }

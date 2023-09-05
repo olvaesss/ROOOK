@@ -8,7 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
+const DataBase_1 = require("../DataBase");
 let AuthService = exports.AuthService = class AuthService {
+    async GiveTokens(User) {
+        const doc = (await (0, DataBase_1.getDataCurrent)('users', User.Email)).doc;
+        const docRef = (await (0, DataBase_1.getDataCurrent)('users', User.Email)).docRef;
+        const REFRESH_TOKEN = { 'qwe': 'qwe' };
+        const ACCSES_TOKEN = { 'qweqsad': 'qwdas' };
+        docRef.set(REFRESH_TOKEN);
+        return { REFRESH_TOKEN, ACCSES_TOKEN };
+    }
 };
 exports.AuthService = AuthService = __decorate([
     (0, common_1.Injectable)()

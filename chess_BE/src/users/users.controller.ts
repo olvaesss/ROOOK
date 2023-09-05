@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Redirect } from '@nestjs/common';
 import { logindata, userdata } from './dto/userdata';
 import { UsersService } from './users.service';
 
@@ -15,6 +15,7 @@ export class UsersController {
           this.UserService.Register(data);
           return 'okey'
      }
+     @Redirect('users/auth')
 
      @Post('Login')
      Login(@Body() data:logindata){
