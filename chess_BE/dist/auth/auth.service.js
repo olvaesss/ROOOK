@@ -9,14 +9,29 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
 const DataBase_1 = require("../DataBase");
+const auth_model_1 = require("./auth.model");
 let AuthService = exports.AuthService = class AuthService {
     async GiveTokens(User) {
+        auth_model_1.TOKENS.length = 2;
         const doc = (await (0, DataBase_1.getDataCurrent)('users', User.Email)).doc;
         const docRef = (await (0, DataBase_1.getDataCurrent)('users', User.Email)).docRef;
-        const REFRESH_TOKEN = { 'qwe': 'qwe' };
-        const ACCSES_TOKEN = { 'qweqsad': 'qwdas' };
-        docRef.set(REFRESH_TOKEN);
-        return { REFRESH_TOKEN, ACCSES_TOKEN };
+        const REFRESH = await this.GiveRefreshToken(User.Email);
+        const ACCESS = await this.GiveAccessToken(User.Email);
+        auth_model_1.TOKENS.push(ACCESS, REFRESH);
+        docRef.update({ 'REFRESH': REFRESH });
+        delete auth_model_1.TOKENS[0];
+        delete auth_model_1.TOKENS[0];
+    }
+    async GiveRefreshToken(Email) {
+        let REFRESH;
+        return REFRESH;
+    }
+    async GiveAccessToken(Email) {
+        let ACCESS;
+        return ACCESS;
+    }
+    async UpdateRefreshToken(User) {
+        return { REFRESH_TOKEN: auth_model_1.REFRESH_TOKEN };
     }
 };
 exports.AuthService = AuthService = __decorate([

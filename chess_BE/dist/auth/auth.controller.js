@@ -16,13 +16,14 @@ exports.AuthController = void 0;
 const common_1 = require("@nestjs/common");
 const auth_service_1 = require("./auth.service");
 const userdata_1 = require("../users/dto/userdata");
+const auth_model_1 = require("./auth.model");
 let AuthController = exports.AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
     }
     index(data) {
         this.authService.GiveTokens(data);
-        return 'index page';
+        return { TOKENS: auth_model_1.TOKENS };
     }
 };
 __decorate([
