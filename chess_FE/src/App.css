@@ -1,3 +1,7 @@
+*{
+  padding: 0;
+  margin: 0;
+}
 body{
   font-family: sans-serif;
   background-color: #1e1f21;
@@ -106,25 +110,25 @@ body{
   transform: translatey(4px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5)
 }
+.white{
+  background-color: rgb(185, 206, 185);
+}
+
+.black{
+  background-color: rgb(116, 165, 116);
+}
 
 .Desk{
-  width: calc(64px * 8);
-  height: calc(64px * 8);
+  width: calc(64px*8);
+  height: calc(64px*8);
   display: flex;
   flex-wrap: wrap;
 }
+
 .Tile{
   width: 64px;
   height: 64px;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.white{
-  background-color: rgb(157, 175, 157);
-}
-
-.black{
-  background-color: rgb(125, 175, 125);
 }
