@@ -3,6 +3,8 @@ import { getDataCurrent } from 'src/DataBase';
 import { logindata, userdata} from 'src/users/dto/userdata';
 import { REFRESH_TOKEN, ACCESS_TOKEN, TOKENS} from './auth.model';
 
+
+
 @Injectable()
 export class AuthService {
 
@@ -29,7 +31,7 @@ export class AuthService {
         // const unsignedToken = pidCryptUtil.base64urlEncode(header) + '.' + base64urlEncode(payload)
         // const signature = HMAC-SHA256(unsignedToken, SECRET_KEY)
         //Разобраться с генерацией jwt токена
-
+        
         let ACCESS:ACCESS_TOKEN
         return ACCESS
     }
