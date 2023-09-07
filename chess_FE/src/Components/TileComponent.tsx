@@ -1,9 +1,11 @@
 import React from "react";
 
-export default function Tile(){
+const TileComponent=()=>{
     return (
-        <div>
-            
+        <div className="Tile">
+            asd
         </div>
     )
 }
+
+export default TileComponent
