@@ -11,6 +11,8 @@ body{
 }
  .Buttons{
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .Logo{
   position: relative;
@@ -111,14 +113,15 @@ body{
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5)
 }
 .white{
-  background-color: rgb(185, 206, 185);
+  background-color: rgb(228, 209, 100);
 }
 
 .black{
-  background-color: rgb(116, 165, 116);
+  background-color: rgb(44, 50, 118);
 }
 
 .Desk{
+  border: black 2px solid;
   width: calc(64px*8);
   height: calc(64px*8);
   display: flex;

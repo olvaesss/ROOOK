@@ -27,7 +27,8 @@ let AuthController = exports.AuthController = class AuthController {
     }
 };
 __decorate([
-    (0, common_1.Get)(''),
+    (0, common_1.Get)('/'),
+    (0, common_1.Redirect)('/'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [userdata_1.userdata]),

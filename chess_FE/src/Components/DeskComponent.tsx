@@ -10,9 +10,11 @@ interface DeskProps{
     return (
         <div className="Desk">
             {desk.tiles.map((row, index)=>
-            <React.Fragment key={index}>
+            <React.Fragment >
                 {row.map(tile=>
                     <TileComponent
+                    tile = {tile}
+                    key = {tile.id}
                     />)}
             </React.Fragment>
             )}

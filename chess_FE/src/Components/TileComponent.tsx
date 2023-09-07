@@ -1,9 +1,15 @@
-import React from "react";
+import React, { FC } from "react";
+import { Tile } from "../models/Tile";
 
-const TileComponent=()=>{
+interface TileProps {
+    tile: Tile,
+
+}
+
+const TileComponent:FC<TileProps>=({tile})=>{
     return (
-        <div className="Tile">
-            asd
+        <div className={['Tile', tile.color].join(' ')}
+        >
         </div>
     )
 }

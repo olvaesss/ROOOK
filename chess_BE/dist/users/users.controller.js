@@ -21,7 +21,7 @@ let UsersController = exports.UsersController = class UsersController {
         this.UserService = UserService;
     }
     GetUsers() {
-        return 'users';
+        return console.log('users');
     }
     Register(data) {
         this.UserService.Register(data);

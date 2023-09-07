@@ -8,7 +8,7 @@ export class UsersController {
 
      @Get('/')
      GetUsers(){
-          return 'users'
+          return console.log('users')
      }
      @Post('Register')
      Register(@Body() data:userdata){

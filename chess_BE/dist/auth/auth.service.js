@@ -23,10 +23,12 @@ let AuthService = exports.AuthService = class AuthService {
         delete auth_model_1.TOKENS[0];
     }
     async GiveRefreshToken(Email) {
+        const SECRET_KEY = 'cAtInSign';
         let REFRESH;
         return REFRESH;
     }
     async GiveAccessToken(Email) {
+        const SECRET_KEY = 'outCaTsiGn';
         let ACCESS;
         return ACCESS;
     }

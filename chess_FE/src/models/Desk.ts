@@ -16,6 +16,7 @@ export class Desk {
                     row.push(new Tile(this, j,i, Colors.WHITE, null))//white
                 }
             }
+            this.tiles.push(row)
         }
     }
 }

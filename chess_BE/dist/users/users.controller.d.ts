@@ -3,7 +3,7 @@ import { UsersService } from './users.service';
 export declare class UsersController {
     private UserService;
     constructor(UserService: UsersService);
-    GetUsers(): string;
+    GetUsers(): void;
     Register(data: userdata): string;
     Login(data: logindata): void;
 }
