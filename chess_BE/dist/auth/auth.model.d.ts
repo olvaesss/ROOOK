@@ -1,22 +1,18 @@
 export declare class REFRESH_TOKEN {
+    constructor(Email: String, Password: String);
     header: {
-        'alg': "HS256";
-        'typ': 'JWT';
+        'alg': "MD5";
+        'typ': 'REF';
     };
-    payload: {
-        'Email': String;
-        'Password': String;
-    };
+    payload: any;
 }
 export declare class ACCESS_TOKEN {
+    constructor(Email: String, Password: String);
     lifetime: Number;
     header: {
-        'alg': String;
-        'typ': 'JWT';
+        'alg': "MD5";
+        'typ': 'ACC';
     };
-    payload: {
-        'Email': String;
-        'Password': String;
-    };
+    payload: any;
 }
-export declare let TOKENS: [ACCESS_TOKEN, REFRESH_TOKEN];
+export declare let TOKENS: any[];

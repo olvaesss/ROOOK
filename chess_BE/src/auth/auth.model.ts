@@ -1,11 +1,24 @@
 export class REFRESH_TOKEN{
-    header:{'alg':"HS256",'typ':'JWT'}
-    payload: {'Email':String,'Password':String}
+    constructor(Email:String, Password:String){
+        this.payload={}
+        this.payload.Email=Email;
+        this.payload.Password=Password
+    }
+    header:{'alg':"MD5",'typ':'REF'}
+    payload: any
 }
 
 export class ACCESS_TOKEN{
-    lifetime:Number;//in seconds
-    header:{'alg':String,'typ':'JWT'}
-    payload: {'Email':String,'Password':String}}
+    constructor(Email:String, Password:String){
+        this.lifetime=86400;//in seconds
+        this.payload={}
+        this.payload.Email=Email;
+        this.payload.Password=Password
+    }
+    lifetime:Number;
+    header:{'alg':"MD5",'typ':'ACC'}
+    payload: any
+}
+    
 
-export let TOKENS: [ACCESS_TOKEN, REFRESH_TOKEN] //модель массива токена который я буду возвращать 
+export let TOKENS = [] //модель массива токена который я буду возвращать 

@@ -10,27 +10,32 @@ exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
 const DataBase_1 = require("../DataBase");
 const auth_model_1 = require("./auth.model");
+const md5_1 = require("./md5/md5");
 let AuthService = exports.AuthService = class AuthService {
     async GiveTokens(User) {
-        auth_model_1.TOKENS.length = 2;
-        const doc = (await (0, DataBase_1.getDataCurrent)('users', User.Email)).doc;
         const docRef = (await (0, DataBase_1.getDataCurrent)('users', User.Email)).docRef;
-        const REFRESH = await this.GiveRefreshToken(User.Email);
-        const ACCESS = await this.GiveAccessToken(User.Email);
+        const REFRESH = await this.GiveRefreshToken(User.Email, User.Password);
+        const ACCESS = await this.GiveAccessToken(User.Email, User.Password);
+        console.log(REFRESH, ACCESS);
         auth_model_1.TOKENS.push(ACCESS, REFRESH);
         docRef.update({ 'REFRESH': REFRESH });
         delete auth_model_1.TOKENS[0];
-        delete auth_model_1.TOKENS[0];
+        delete auth_model_1.TOKENS[1];
+        console.log(auth_model_1.TOKENS);
     }
-    async GiveRefreshToken(Email) {
+    async GiveRefreshToken(Email, Password) {
         const SECRET_KEY = 'cAtInSign';
-        let REFRESH;
-        return REFRESH;
+        let REFRESH = new auth_model_1.REFRESH_TOKEN(Email, Password);
+        const unsignedToken = (0, md5_1.default)(REFRESH.header) + '.' + (0, md5_1.default)(REFRESH.payload);
+        const signature = (0, md5_1.default)(unsignedToken + '.' + SECRET_KEY);
+        return signature;
     }
-    async GiveAccessToken(Email) {
+    async GiveAccessToken(Email, Password) {
         const SECRET_KEY = 'outCaTsiGn';
-        let ACCESS;
-        return ACCESS;
+        let ACCESS = new auth_model_1.ACCESS_TOKEN(Email, Password);
+        const unsignedToken = (0, md5_1.default)(ACCESS.header) + '.' + (0, md5_1.default)(ACCESS.payload);
+        const signature = (0, md5_1.default)(unsignedToken + '.' + SECRET_KEY);
+        return signature;
     }
     async UpdateRefreshToken(User) {
         return { REFRESH_TOKEN: auth_model_1.REFRESH_TOKEN };
