@@ -3,7 +3,8 @@ import { userdata } from 'src/users/dto/userdata';
 export declare class AuthController {
     private readonly authService;
     constructor(authService: AuthService);
-    index(data: userdata): {
-        TOKENS: any[];
-    };
+    index(data: userdata): Promise<{
+        access: string;
+        refresh: string;
+    }>;
 }
