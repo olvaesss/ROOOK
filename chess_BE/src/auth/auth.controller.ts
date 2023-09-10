@@ -9,6 +9,5 @@ export class AuthController {
   @Redirect('/')
   async index(@Body() data:userdata){
     return await this.authService.GiveTokens(data)
-    
   }
 }

@@ -18,6 +18,7 @@ export class Figure{
     tile:Tile;
     name:FigureNames;
     id:number;
+    underAttack:true|false
 
     constructor(color:Colors, tile:Tile){
         this.color=color;
@@ -25,6 +26,7 @@ export class Figure{
         this.tile.figure=this;
         this.name = FigureNames.FIGURE
         this.id=Math.random()
+        this.underAttack=false
         
     }
     canMove(target: Tile) : boolean {
@@ -35,9 +37,10 @@ export class Figure{
         return true;
       }
 
-      AttackKing(target:Tile){
+      attackKing(target:Tile){
         if((target.figure?.color != this.color)&&(target.figure?.name === FigureNames.KING)&&(this.name!== FigureNames.KING))
         {
+          target.figure.underAttack=true
         }
       }
     

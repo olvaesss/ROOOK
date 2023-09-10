@@ -9,9 +9,7 @@ export class King extends Figure {
     super(color, tile);
     this.logo = color === Colors.BLACK ? blackLogo : whiteLogo;
     this.name = FigureNames.KING;
-    this.underAttack= false
   }
-  underAttack:true|false
 
   canMove(target: Tile): boolean {
     if(!super.canMove(target)){
