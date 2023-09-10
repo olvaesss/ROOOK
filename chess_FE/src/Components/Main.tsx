@@ -11,6 +11,7 @@ export default function Main() {
     function restart(){
         const newDesk = new Desk();
         newDesk.InitTiles()
+        newDesk.addFigures()
         setDesk(newDesk)
     }
 

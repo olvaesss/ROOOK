@@ -128,6 +128,12 @@ body{
   flex-wrap: wrap;
 }
 
+
+.Tile img{
+  width: 48px;
+  height: 48px;
+  position: relative;
+}
 .Tile{
   width: 64px;
   height: 64px;
@@ -135,3 +141,18 @@ body{
   justify-content: center;
   align-items: center;
 }
+
+.selected{
+  background-color: green;
+}
+
+.available{
+  height: 16px;
+  width: 16px;
+  background-color: rgb(75, 138, 75);
+  border-radius: 50%;
+}
+
+/* .h1{
+  background-color: rgb(208, 119, 119);
+} */
