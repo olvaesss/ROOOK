@@ -4,6 +4,6 @@ export declare class UsersController {
     private UserService;
     constructor(UserService: UsersService);
     GetUsers(): void;
-    Register(data: userdata): string;
+    Register(data: userdata): void;
     Login(data: logindata): void;
 }

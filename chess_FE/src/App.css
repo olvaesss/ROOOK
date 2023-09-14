@@ -153,6 +153,10 @@ body{
   border-radius: 50%;
 }
 
-/* .h1{
-  background-color: rgb(208, 119, 119);
-} */
+.Sidebar_Register,.Sidebar_Login{
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  width: 700px;
+  height: 100px;
+}

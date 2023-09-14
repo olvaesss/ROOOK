@@ -1,13 +1,25 @@
 import React, {FC}from "react";
 import Register from "./Register";
+import Login from './Login'
+import { ProSidebarProvider } from "react-pro-sidebar";
+
 interface SideBarProps{
-    toRender: JSX.Element|null;
-    render:(toRender:JSX.Element)=>void;
+    toRender: 'Register'|'Login';
 }
-const SideBar : FC<SideBarProps> = ({toRender,render})=>{
-    if(toRender==<Register/>){
-        return <Register/>
-    }
+const SideBar : FC<SideBarProps> = ({toRender})=>{
+    if(toRender=='Login'){
+        // return <ProSidebarProvider></ProSidebarProvider>
+        return (
+            <div className="Sidebar_Login">
+                <Login/>
+            </div>
+        )
+    }else{
+        return (
+            <div className="Sidebar_Register">
+                <Register/>
+            </div>
+        )    }
 }
 
 export default SideBar

@@ -1,6 +1,10 @@
 import React from "react";
+import SideBar from "./SideBarComponent";
+import Register from "./Register";
+import Login from "./Login";
 
 export default function Header(){
+
     return (
         <div className="Header">
             <div className="Logo"></div>
@@ -17,6 +21,10 @@ export default function Header(){
             <button className="RegisterButton">Регистрация</button>
             </div>
             </div>
+            <SideBar
+            toRender="Login"/>
+            <SideBar
+            toRender="Register"/>
         </div>
     )
 }
