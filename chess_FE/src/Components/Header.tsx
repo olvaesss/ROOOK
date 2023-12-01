@@ -1,7 +1,8 @@
 import React from "react";
 import SideBar from "./SideBarComponent";
 import Register from "./Register";
-import Login from "./Login";
+import Login from "./pages/Login";
+
 
 export default function Header(){
 
@@ -21,10 +22,6 @@ export default function Header(){
             <button className="RegisterButton">Регистрация</button>
             </div>
             </div>
-            <SideBar
-            toRender="Login"/>
-            <SideBar
-            toRender="Register"/>
         </div>
     )
 }

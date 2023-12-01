@@ -1,6 +1,6 @@
 import React, {FC}from "react";
 import Register from "./Register";
-import Login from './Login'
+import Login from './pages/Login'
 import { ProSidebarProvider } from "react-pro-sidebar";
 
 interface SideBarProps{

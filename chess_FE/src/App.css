@@ -160,3 +160,8 @@ body{
   width: 700px;
   height: 100px;
 }
+
+.Lobby{
+  border: rgb(226, 165, 51) solid 1px;
+  background-color: rgb(58, 58, 59);
+}

@@ -1,6 +1,6 @@
 import { Colors } from "./Colors";
 import { Desk } from "./Desk";
-import { Figure } from "./figures/figures";
+import { Figure, FigureNames } from "./figures/figures";
 
 export class Tile{
     readonly x:number;
@@ -62,7 +62,7 @@ export class Tile{
         return true;
       }
     
-      isEmptyDiagonal(target: Tile): boolean {
+      isEmptyDiagonal(target: Tile): boolean {    
         const absX = Math.abs(target.x - this.x);
         const absY = Math.abs(target.y - this.y);
         if(absY !== absX)
@@ -82,7 +82,10 @@ export class Tile{
         this.figure = figure;
         this.figure.tile = this;
       }
-    
+
+      isValidMove():boolean{
+        return true
+      }
 
 
       KingsMovesVert(target:Tile):boolean{
@@ -90,7 +93,7 @@ export class Tile{
           return false;      
         }
         console.log(this.x,target.x)
-        if(target.y==this.y+1||target.y==this.y-1){
+        if(target.y===this.y+1||target.y===this.y-1){
           return true
         }else{
           return false
@@ -101,7 +104,7 @@ export class Tile{
           return false;
         }
         console.log(this.x,target.x)
-        if(target.x==this.x+1||target.x==this.x-1){
+        if(target.x===this.x+1||target.x===this.x-1){
           return true
         }else{
           return false
@@ -114,10 +117,10 @@ export class Tile{
           return false; 
           console.log(this.x,this.y)
           if(
-          (target.x==this.x-1&&target.y==this.y+1)||
-          (target.x==this.x+1&&target.y==this.y+1)||
-          (target.x==this.x+1&&target.y==this.y-1)||
-          (target.x==this.x-1&&target.y==this.y-1)
+          (target.x===this.x-1&&target.y===this.y+1)||
+          (target.x===this.x+1&&target.y===this.y+1)||
+          (target.x===this.x+1&&target.y===this.y-1)||
+          (target.x===this.x-1&&target.y===this.y-1)
           ){
             return true
           }else{

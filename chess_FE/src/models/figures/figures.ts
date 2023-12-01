@@ -1,7 +1,6 @@
 import { Colors } from "../Colors";
 import { Tile } from "../Tile";
 import logo from '../../assets/figures/cheq/bK.png' 
-import { King } from "./King";
 export enum FigureNames{
     FIGURE = "Фигура",
     KING = "Король",
@@ -18,7 +17,7 @@ export class Figure{
     tile:Tile;
     name:FigureNames;
     id:number;
-    underAttack:true|false
+    underAttack:boolean
 
     constructor(color:Colors, tile:Tile){
         this.color=color;
@@ -32,15 +31,16 @@ export class Figure{
     canMove(target: Tile) : boolean {
         if(target.figure?.color === this.color)
           return false
-        if(target.figure?.name === FigureNames.KING)
-          return false
+        if(target.figure?.name === FigureNames.KING && target.figure?.color !==this.color){
+          this.attackKing(target)
+        }
         return true;
       }
 
       attackKing(target:Tile){
-        if((target.figure?.color != this.color)&&(target.figure?.name === FigureNames.KING)&&(this.name!== FigureNames.KING))
-        {
-          target.figure.underAttack=true
+        if(target.figure){
+        target.figure.underAttack = true
+        console.log(target.color+" King under attack")
         }
       }
     

@@ -4,7 +4,7 @@ import { Desk } from "../models/Desk";
 import { Colors } from "../models/Colors";
 import { Player } from "../models/Player";
 
-export default function Main() {
+export default function Game() {
     const [desk, setDesk] = useState(new Desk())
     const [whitePlayer, setWhitePlayer] = useState(new Player(Colors.WHITE))
     const [blackPlayer, setBlackPlayer] = useState(new Player(Colors.BLACK))

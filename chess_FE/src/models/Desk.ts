@@ -9,7 +9,6 @@ import { Rook } from "./figures/Rook";
 import { Tile } from "./Tile";
 
 export class Desk {
-
     tiles:Tile[][]=[]
     lostBlackFigures: Figure[] = []
     lostWhiteFigures: Figure[] = []
