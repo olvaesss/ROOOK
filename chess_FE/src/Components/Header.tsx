@@ -1,6 +1,11 @@
 import React from "react";
+import SideBar from "./SideBarComponent";
+import Register from "./Register";
+import Login from "./pages/Login";
+
 
 export default function Header(){
+
     return (
         <div className="Header">
             <div className="Logo"></div>
