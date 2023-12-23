@@ -1,3 +1,7 @@
+*{
+  padding: 0;
+  margin: 0;
+}
 body{
   font-family: sans-serif;
   background-color: #1e1f21;
@@ -5,7 +9,11 @@ body{
   justify-content: center; 
   align-items: center;
 }
-
+ .Buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .Logo{
   position: relative;
   display:inline-block;
@@ -20,7 +28,6 @@ body{
   background-repeat: no-repeat;
   animation-play-state: running;
 }
-
 .Logo::after{
   content:'';
   position: absolute;
@@ -34,7 +41,12 @@ body{
   background-size: 200%;
   animation: animateborder 4s infinite;
 }
-
+.RegisterForm{
+  padding: 1px;
+  justify-content: center; 
+  align-items: center;
+  height:max-content;
+}
 @keyframes animateborder {
   0% {
     background-position: 0%;
@@ -56,7 +68,7 @@ body{
   padding: 6px;
 }
 
-.PlayButton{
+.RegisterButton, .LoginButton{
   position: relative;
   padding: 5px;
   display:inline-block;
@@ -71,7 +83,7 @@ body{
   font-size: 15px;
 }
 
-.PlayButton::after{
+.RegisterButton::after , .LoginButton::after{
   content:'';
   position: absolute;
   z-index: -1;
@@ -100,12 +112,27 @@ body{
   transform: translatey(4px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5)
 }
+.white{
+  background-color: rgb(228, 209, 100);
+}
+
+.black{
+  background-color: rgb(44, 50, 118);
+}
 
 .Desk{
-  width: calc(64px * 8);
-  height: calc(64px * 8);
+  border: black 2px solid;
+  width: calc(64px*8);
+  height: calc(64px*8);
   display: flex;
   flex-wrap: wrap;
+}
+
+
+.Tile img{
+  width: 48px;
+  height: 48px;
+  position: relative;
 }
 .Tile{
   width: 64px;
@@ -115,10 +142,26 @@ body{
   align-items: center;
 }
 
-.white{
-  background-color: rgb(157, 175, 157);
+.selected{
+  background-color: green;
 }
 
-.black{
-  background-color: rgb(125, 175, 125);
+.available{
+  height: 16px;
+  width: 16px;
+  background-color: rgb(75, 138, 75);
+  border-radius: 50%;
+}
+
+.Sidebar_Register,.Sidebar_Login{
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  width: 700px;
+  height: 100px;
+}
+
+.Lobby{
+  border: rgb(226, 165, 51) solid 1px;
+  background-color: rgb(58, 58, 59);
 }

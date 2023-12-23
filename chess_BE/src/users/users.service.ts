@@ -1,10 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { userdata } from './dto/userdata';
-import { db } from 'src/DataBase';
+import { User } from './dto/UserDTO';
 
 @Injectable()
 export class UsersService {
 
-    Register(data:userdata){//Сервис регистрации нового игрока
+    async Register(User:User){//регестр сервис
+        
+    }
+    async Login(User:User){//логин сервис
     }
 }
