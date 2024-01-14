@@ -1,5 +1,5 @@
 import React from "react";
-import { API } from "../axios";
+import { API } from "../../axios";
 
 export default function Register(){
     function RegisterPost(){
