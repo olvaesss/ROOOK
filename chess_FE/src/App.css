@@ -1,114 +1,42 @@
 *{
-  padding: 0;
   margin: 0;
+  padding: 0;
+  font-family: Lemon;
+  color: white;
 }
+
+a{
+  text-decoration: none;
+  color: white;
+  margin-left: 4%;
+}
+
+@font-face {
+  font-family: Lemon;
+  src: url(./assets/fonts/Lemon-Regular.ttf);
+}
+
 body{
-  font-family: sans-serif;
-  background-color: #1e1f21;
+  background-color: rgba(30, 30, 30, 1);
+}
+
+h1{
+  margin-top: 24px;
+}
+
+.Header{
+  color: white;
+  height: 100px;
+  width: 100%;
   display: flex;
-  justify-content: center; 
-  align-items: center;
-}
- button{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.Logo{
-  position: relative;
-  display:inline-block;
-  text-decoration: none;
-  height: 250px;
-  width: 400px;
-  color: #fff;
-  border-radius: .125em;
-  background-image: url('./assets/pictures/rook-chess-sport-logo_330148-44.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  animation-play-state: running;
-}
-.Logo::after{
-  content:'';
-  position: absolute;
-  z-index: -1;
-  top: -.125em;
-  left: -.125em;
-  width: calc(100% + .25em);
-  height: calc(100% + .25em);
-  border-radius: .25em;
-  background-image: linear-gradient(45deg,blue, yellow);
-  background-size: 200%;
-  animation: animateborder 4s infinite;
-}
-@keyframes animateborder {
-  0% {
-    background-position: 0%;
-}
-50% {
-    background-position: 100%;
-}
-100% {
-    background-position: 0%;
-}
+  background-color: rgba(47, 47, 47); 
+  border-bottom: white solid 1px;
 }
 
-
-.Header,.Main,.Footer{
-  color:white;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  display: flex;
-  padding: 6px;
+nav{
+  margin-top: 30px;
+  margin-left: 300px;
 }
-
-button{
-  margin-top: 10px;
-  margin-right: 12px;
-  position: relative;
-  padding: 5px;
-  display:inline-block;
-  padding: 1em 2em;
-  text-decoration: none;
-  color: #fff;
-  width: 200px;
-  height: 50px;
-  background-color: black;
-  border: 2px;
-  animation-play-state: running;
-  font-size: 15px;
-}
-
-button::after{
-  content:'';
-  position: absolute;
-  z-index: -1;
-  top: -.125em;
-  left: -.125em;
-  width: calc(100% + .25em);
-  height: calc(100% + .25em);
-  border-radius: .25em;
-  background-image: linear-gradient(90deg,blue, yellow);
-  background-size: 200%;
-  animation: animateborder 3s infinite;
-}
-.white{
-  background-color: rgb(228, 209, 100);
-}
-
-.black{
-  background-color: rgb(44, 50, 118);
-}
-
-.Desk{
-  border: black 2px solid;
-  width: calc(64px*8);
-  height: calc(64px*8);
-  display: flex;
-  flex-wrap: wrap;
-}
-
 
 .Tile img{
   width: 48px;
@@ -134,26 +62,43 @@ button::after{
   border-radius: 50%;
 }
 
+.white{
+  background-color: rgb(201 ,201 ,201);
+}
+
+.black{
+  background-color: rgb(101 ,101, 101);
+}
+
+
+.Desk{
+  border: black 2px solid;
+  width: calc(64px*8);
+  height: calc(64px*8);
+  display: flex;
+  flex-wrap: wrap;
+
+}
 .Lobby{
-  border: rgb(226, 165, 51) solid 1px;
-  background-color: rgb(58, 58, 59);
-}
-
-.LoginForm, .RegisterForm{
-  width: 200px;
-  height: 20px;
-  padding: 1px;
-  
-}
-
-.Register_Component, .Login_Component{
-  width: 100%;
+  display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  text-align: center;}
+
+.Footer{
+  height: 100px;
+  width: 100%;
+  background-color: rgba(47, 47, 47);
+  border-top: white solid 1px;
+  position: fixed;
+  bottom: 0;
 }
 
-input{
-  width: 300px;
-  height: 20px;
+.Logo{
+  width: 16%;
+}
+
+.Navigation{
+  width: 60%;
+  margin-top: 8px;
 }

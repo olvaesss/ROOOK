@@ -25,7 +25,7 @@ export default function Game() {
     }
 
     return(
-        <div className="Main">
+        <div className="Chess">
             <DeskComponent
             desk={desk}
             setDesk={setDesk}
