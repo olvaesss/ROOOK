@@ -13,11 +13,17 @@ export default function Register(){
     }
     return (
             <div className="Register_Component">
-            <form method="POST" className="RegisterForm">
+            <text>Sign Up</text>
+            <form method="POST" className="Register_Form">
+                <p>Username</p>
                 <input name="Name" type="text"></input>
+                <p>Email</p>
                 <input name="Email" type="email"></input>
+                <p>Password</p>
                 <input name="Password" type="password"></input>
-                <button name="Confirm_Reg" onClick={RegisterPost}>Подтвердить</button>
+                <p>Repeat password</p>
+                <input name="Repeat_Password" type="password"></input>
+                <button name="Confirm" onClick={RegisterPost}>Подтвердить</button>
             </form>
         </div>
 

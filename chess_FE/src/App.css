@@ -83,7 +83,8 @@ nav{
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;}
+  text-align: center;
+}
 
 .Footer{
   height: 100px;
@@ -92,13 +93,32 @@ nav{
   border-top: white solid 1px;
   position: fixed;
   bottom: 0;
+  display: flex;
+}
+
+.Footer_Links{
+  width: 60%;
 }
 
 .Logo{
-  width: 16%;
+  width: 15%;
 }
 
 .Navigation{
   width: 60%;
   margin-top: 8px;
+}
+
+.Register_Component, .Login_Component{
+  background-color: rgba(100, 100, 100);
+}
+
+.Register_Component{
+  width: 600px;
+  height: 680px;
+}
+
+.Register_Form{
+  justify-content: center;
+  align-items: center;  
 }

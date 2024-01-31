@@ -10,11 +10,11 @@ const Login = ()=>{
     }
     return (
         <div className="Login_Component">
-            <text>Вход</text>
+            <text>Sign In</text>
             <form method="POST" className="LoginForm">
                 <input name="Email" type="email"></input>
                 <input name="Password" type="password"></input>
-                <button name="Confirm_Log"onClick={LoginPost}>Подтвердить</button>
+                <button name="Confirm"onClick={LoginPost}>Подтвердить</button>
             </form>
         </div>
     )
