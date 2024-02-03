@@ -8,11 +8,6 @@ class LoginUserDTO{
         this.Email = Email,
         this.Password = Password
     }
-    private Login():any{
-        let doc = DB.getUser(this.Email, this.Password)
-        if(!doc) return null
-        
-    }
 }
 
 export default LoginUserDTO
