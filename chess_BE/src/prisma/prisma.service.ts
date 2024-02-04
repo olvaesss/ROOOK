@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import {Player, PrismaClient} from '@prisma/client'
-import IUser from 'src/users/interfaces/IUser';
 
 @Injectable()
 export class PrismaService {
@@ -10,9 +9,14 @@ export class PrismaService {
     this.prisma = new PrismaClient();
   }
 
-  async getUser(Email:string){
-    const User = await this.prisma.player.findFirst({where:{EMAIL:Email}})
-    return User
+  async getUser(Email:string):Promise<Player|null>{
+    try {
+      const User = await this.prisma.player.findFirst ({where:{EMAIL:Email}})
+      return User
+    } catch (err) {
+      console.log(err)
+      return null
+    }
   }
 
   async createUser(Player:Player){
@@ -25,10 +29,9 @@ export class PrismaService {
     }
   }
 
-  async deleteUser(Email:string){
+  async deleteUser(Player:Player){
     try {
-      const User = await this.getUser(Email)
-      await this.prisma.player.delete({where:{ID_PLAYER:User.ID_PLAYER}})
+      await this.prisma.player.delete({where:{ID_PLAYER:Player.ID_PLAYER}})
     } catch (err) {
       console.log(err)
       return false
@@ -37,8 +40,7 @@ export class PrismaService {
 
   async updateUser(Player:Player){
     try {
-      const User = await this.getUser(Player.EMAIL)
-      await this.prisma.player
+      await this.prisma.player.update({where:{ID_PLAYER:Player.ID_PLAYER},data:Player})
     } catch (err) {
       console.log(err)
       return false

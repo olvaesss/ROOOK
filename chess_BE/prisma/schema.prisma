@@ -13,7 +13,7 @@ datasource db {
 model Player{
   ID_PLAYER  Int @id @default(autoincrement())
   USERNAME  String
-  EMAIL String 
+  EMAIL String @unique
   PASSWORD  String
   CREATEDATE  DateTime
   CONFIRMED Boolean
