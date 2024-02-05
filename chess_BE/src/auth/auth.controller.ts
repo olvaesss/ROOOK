@@ -1,12 +1,16 @@
-import { Body, Controller, Get, Redirect } from '@nestjs/common';
+import { Body, Controller, Get, Post, Redirect } from '@nestjs/common';
 import { AuthService } from './auth.service';
 
-@Controller('users/auth')
+@Controller('/auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
   @Get('/')
-  @Redirect('/')
-  async index(@Body() data:any){
+  async getTokens(@Body() data:any){
     return await this.authService.GiveTokens(data)
+  }
+
+  @Post('/')
+  async checkTokens(@Body() data:{}){
+    return await this.authService
   }
 }
