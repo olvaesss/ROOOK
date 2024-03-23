@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  server:
+    build: 
+      context: chess_BE
+    command: npm start
+  
+  client:
+    build: 
+      context: chess_FE
+    command: npm start
+    depends_on:
+      - server

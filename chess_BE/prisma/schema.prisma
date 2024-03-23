@@ -10,33 +10,33 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Player{
-  ID_PLAYER  Int @id @default(autoincrement())
-  USERNAME  String
-  EMAIL String @unique
-  PASSWORD  String
-  CREATEDATE  DateTime
-  CONFIRMED Boolean
+model Player {
+  ID_PLAYER  Int      @id @default(autoincrement())
+  USERNAME   String
+  EMAIL      String   @unique
+  PASSWORD   String
+  CREATEDATE DateTime
+  CONFIRMED  Boolean
 }
 
-model Game{
-  ID_GAME String  @id
+model Game {
+  ID_GAME     String @id
   ID_PLAYER_1 Int
   ID_PLAYER_2 Int
-  WINNER  Int
-  TURNS String
+  WINNER      Int
+  TURNS       String
 }
 
-model News{
-  ID_NEWS Int @id
+model News {
+  ID_NEWS   Int    @id
   ID_PLAYER Int
-  TEXT String
-  TITLE String
-  HREF  String
+  TEXT      String
+  TITLE     String
+  HREF      String
 }
 
-model Player_Hisrory{
-  PLAYER_ID Int @id
-  RESULT Int
-  MOD String
+model Player_Hisrory {
+  PLAYER_ID Int    @id
+  RESULT    Int
+  MOD       String
 }

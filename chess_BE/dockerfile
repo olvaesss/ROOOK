@@ -1,0 +1,10 @@
+FROM node:latest
+
+WORKDIR /chess_BE/
+COPY  package.json /chess_BE
+COPY  package-lock.json /chess_BE
+COPY tsconfig.json /chess_FE
+RUN npm install
+COPY . .
+RUN npm run build
+CMD [ "npm", "start" ]
