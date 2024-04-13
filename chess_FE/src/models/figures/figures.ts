@@ -29,20 +29,10 @@ export class Figure{
         
     }
     canMove(target: Tile) : boolean {
-        if(target.figure?.color === this.color)
-          return false
-        if(target.figure?.name === FigureNames.KING && target.figure?.color !==this.color){
-          this.attackKing(target)
-        }
+        if(target.figure?.color === this.color) return false
         return true;
       }
 
-      attackKing(target:Tile){
-        if(target.figure){
-        target.figure.underAttack = true
-        console.log(target.color+" King under attack")
-        }
-      }
     
       moveFigure(target: Tile) {
     }

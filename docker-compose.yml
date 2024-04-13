@@ -1,13 +1,50 @@
 version: '3'
 
+networks:
+  NT:
+    driver: bridge
+
 services:
+
+  database:
+    container_name: database
+    image: postgres:16
+    environment:
+      POSTGRES_USER: rook_user
+      POSTGRES_PASSWORD: rook_pass
+      PGDATA: /data/postgres
+    networks:
+      - NT
+    ports:
+      - "5000:5432"
+    restart: unless-stopped
+
+  databaseControl:
+    container_name: databaseControl
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: rook@mail.com
+      PGADMIN_DEFAULT_PASSWORD: rook_pass
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    networks:
+      - NT
+    ports:
+      - 127.0.0.1:5050:80
+    restart: unless-stopped
+
   server:
-    build: 
+    container_name: rook-server
+    networks:
+      - NT
+    build:
       context: chess_BE
     command: npm start
-  
+
   client:
-    build: 
+    container_name: rook-client
+    networks:
+      - NT
+    build:
       context: chess_FE
     command: npm start
     depends_on:

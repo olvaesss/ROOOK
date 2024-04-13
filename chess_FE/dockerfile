@@ -6,6 +6,5 @@ COPY package-lock.json /chess_FE
 COPY tsconfig.json /chess_FE
 RUN npm install
 COPY . .
-RUN npm run build
 EXPOSE 3000
-CMD [«nginx», "-g", «daemon off;»]
+CMD npm start

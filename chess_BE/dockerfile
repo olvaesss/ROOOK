@@ -1,10 +1,16 @@
 FROM node:latest
 
 WORKDIR /chess_BE/
-COPY  package.json /chess_BE
-COPY  package-lock.json /chess_BE
-COPY tsconfig.json /chess_FE
+
+# Копируем файлы package.json и package-lock.json и устанавливаем зависимости
+COPY package.json package-lock.json ./
 RUN npm install
+
+# Копируем остальные файлы проекта
 COPY . .
-RUN npm run build
-CMD [ "npm", "start" ]
+
+# Генерируем Prisma Client с указанными binaryTargets
+RUN npx prisma generate
+
+# Запускаем сервер
+CMD npm run start:dev
