@@ -1,7 +1,11 @@
 version: '3'
 
 networks:
-  NT:
+  client-server:
+    driver: bridge
+  server-database:
+    driver: bridge
+  databaseNet:
     driver: bridge
 
 services:
@@ -14,9 +18,10 @@ services:
       POSTGRES_PASSWORD: rook_pass
       PGDATA: /data/postgres
     networks:
-      - NT
+      - server-database
+      - databaseNet
     ports:
-      - "5000:5432"
+      - "3002:5432"
     restart: unless-stopped
 
   databaseControl:
@@ -27,25 +32,30 @@ services:
       PGADMIN_DEFAULT_PASSWORD: rook_pass
       PGADMIN_CONFIG_SERVER_MODE: 'False'
     networks:
-      - NT
+      - databaseNet
     ports:
-      - 127.0.0.1:5050:80
+      - 127.0.0.1:3050:80
     restart: unless-stopped
 
   server:
     container_name: rook-server
     networks:
-      - NT
+      - client-server
+      - server-database
     build:
       context: chess_BE
+    ports:
+      - 127.0.0.1:3001:3001
     command: npm start
 
   client:
     container_name: rook-client
     networks:
-      - NT
+      - client-server
     build:
       context: chess_FE
+    ports:
+      - 127.0.0.1:3000:3000
     command: npm start
     depends_on:
       - server

@@ -8,6 +8,7 @@ RUN npm install
 
 # Копируем остальные файлы проекта
 COPY . .
+EXPOSE 3001
 
 # Генерируем Prisma Client с указанными binaryTargets
 RUN npx prisma generate
