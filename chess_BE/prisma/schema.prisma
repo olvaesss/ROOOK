@@ -36,7 +36,7 @@ model News {
   HREF      String
 }
 
-model Player_Hisrory {
+model Player_History {
   PLAYER_ID Int    @id
   RESULT    Int
   MOD       String

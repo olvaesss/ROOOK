@@ -8,6 +8,20 @@ export class AppService {
          'Шахматы - это не только соревнование, но и возможность объединиться с друзьями. Играйте онлайн, вызывайте своих товарищей на дуэль, обсуждайте свои ходы и разрабатывайте новые стратегии вместе.',
           'Стремитесь к вершинам шахматного мастерства. Участвуйте в турнирах, соревнуйтесь с лучшими, улучшайте свои навыки и достигайте новых высот. С нами вы сможете стать настоящим гроссмейстером!']
         let images = []
-        return {titles, text}
+        return {titles, text, images}
+    }
+
+    async getLearnTextAndImages(){
+        let titles = []
+        let text = []
+        let images = []
+        return {titles, text, images}
+    }
+
+    async getNews(){
+        let titles = []
+        let text = []
+        let images = []
+        return {titles, text, images}
     }
 }

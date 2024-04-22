@@ -9,4 +9,14 @@ export class AppController {
   GetMainData(){
     return this.appService.getMainTextAndImages()
   }
+  
+  @Get('/learn')
+  GetLearnData(){
+    return this.appService.getLearnTextAndImages()
+  }
+  
+  @Get('/news')
+  GetNews(){
+    return this.appService.getNews()
+  }
 }
