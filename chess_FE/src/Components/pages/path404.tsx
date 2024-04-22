@@ -3,7 +3,7 @@ import React from "react";
 const Path404 = ()=>{
     return(
         <div>
-            <h1>Not found. 404 error</h1>
+            <h1>Не найдено. 404 ошибка</h1>
         </div>
     )
 }

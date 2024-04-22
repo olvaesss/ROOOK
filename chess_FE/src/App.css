@@ -1,19 +1,19 @@
 *{
   margin: 0;
   padding: 0;
-  font-family: Lemon;
+  font-family: Labor;
   color: white;
 }
 
 a{
   text-decoration: none;
   color: white;
-  margin-left: 4%;
+  margin-left: 2%;
 }
 
 @font-face {
-  font-family: Lemon;
-  src: url(./assets/fonts/Lemon-Regular.ttf);
+  font-family: Labor;
+  src: url(./assets/fonts/LaborUnion.ttf);
 }
 
 body{
@@ -101,12 +101,15 @@ nav{
 }
 
 .Logo{
-  width: 15%;
+  margin-top: 1%;
+  width: 17%;
 }
-
+.Footer_Logo{
+  margin-top: 2%;
+}
 .Navigation{
-  width: 60%;
-  margin-top: 8px;
+  width: 57%;
+  margin-top: 1%;
 }
 
 .Register_Component, .Login_Component{
@@ -121,4 +124,11 @@ nav{
 .Register_Form{
   justify-content: center;
   align-items: center;  
+}
+
+.MainContainer{
+  margin-top: 1%;
+}
+.MainTitles{
+  margin-top: 1%;
 }

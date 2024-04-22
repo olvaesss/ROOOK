@@ -13,6 +13,6 @@ async function bootstrap() {
     optionsSuccessStatus: 204,
   };
   app.enableCors(corsOptions)
-  await app.listen(PORT, '0.0.0.0');
+  await app.listen(PORT);
 }
 bootstrap();

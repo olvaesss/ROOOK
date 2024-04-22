@@ -13,15 +13,15 @@ export default function Register(){
     }
     return (
             <div className="Register_Component">
-            <text>Sign Up</text>
+            <text>Регистрация</text>
             <form method="POST" className="Register_Form">
-                <p>Username</p>
+                <p>Имя пользователя</p>
                 <input name="Name" type="text"></input>
-                <p>Email</p>
+                <p>Электронная почта</p>
                 <input name="Email" type="email"></input>
-                <p>Password</p>
+                <p>Пароль</p>
                 <input name="Password" type="password"></input>
-                <p>Repeat password</p>
+                <p>Повторите пароль</p>
                 <input name="Repeat_Password" type="password"></input>
                 <button name="Confirm" onClick={RegisterPost}>Подтвердить</button>
             </form>

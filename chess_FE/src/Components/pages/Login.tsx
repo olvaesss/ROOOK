@@ -10,7 +10,7 @@ const Login = () => {
     }
     return (
         <div className="Login_Component">
-            <text>Sign In</text>
+            <text>Вход</text>
             <form method="POST" className="LoginForm">
                 <input name="Email" type="email"></input>
                 <input name="Password" type="password"></input>

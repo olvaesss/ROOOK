@@ -8,8 +8,8 @@ const Account = ()=>{
     {
         return(
             <div>
-                <Link to="/account/login">Sign In</Link>
-                <Link to="/account/register">Sign Up</Link>
+                <Link to="/account/login">Вход</Link>
+                <Link to="/account/register">Регистрация</Link>
             </div>
         )
     }

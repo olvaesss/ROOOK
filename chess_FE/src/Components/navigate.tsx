@@ -5,11 +5,11 @@ const Navigate = ()=>{
     return(
         <div className="Navigation">
         <nav>
-          <Link to="/learning">Learning</Link>
-          <Link to="/account">Account</Link>
-          <Link to="/play">Play</Link>
-          <Link to="/news">News</Link>
-          <Link to="/about">About us</Link>
+          <Link to="/learning">Обучение</Link>
+          <Link to="/account">Аккаунт</Link>
+          <Link to="/play">Играть</Link>
+          <Link to="/news">Новости</Link>
+          <Link to="/about">О нас</Link>
         </nav>
       </div>
     )
