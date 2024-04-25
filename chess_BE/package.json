@@ -26,6 +26,7 @@
     "@nestjs/jwt": "^10.1.1",
     "@nestjs/platform-express": "^10.0.0",
     "@prisma/client": "^5.9.1",
+    "firebase": "^10.11.0",
     "firebase-admin": "^11.10.1",
     "prisma": "^5.9.1",
     "reflect-metadata": "^0.1.13",

@@ -1,7 +1,6 @@
 
 
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
 import { getStorage, ref } from "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -19,7 +18,31 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const storage = getStorage()
-const storageRef = ref(storage)
-const imagesRef = ref(storageRef, 'images')
+import {uploadBytes, getDownloadURL } from "firebase/storage";
+
+// Получение ссылки на хранилище Firebase
+const storage = getStorage();
+
+// Функция загрузки изображения
+export const uploadImage = async (file, imageName) => {
+    try {
+        const storageRef = ref(storage, `images/${imageName}`);
+        await uploadBytes(storageRef, file);
+        console.log("Изображение успешно загружено!");
+    } catch (error) {
+        console.error("Ошибка при загрузке изображения:", error);
+    }
+};
+
+// Функция скачивания изображения
+export const downloadImage = async (imageName) => {
+    try {
+        const storageRef = ref(storage, `images/${imageName}`);
+        const imageUrl = await getDownloadURL(storageRef);
+        console.log("URL изображения:", imageUrl);
+        return imageUrl;
+    } catch (error) {
+        console.error("Ошибка при скачивании изображения:", error);
+        return null;
+    }
+};
