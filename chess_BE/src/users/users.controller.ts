@@ -9,12 +9,11 @@ export class UsersController {
 
      @Post('Register')
      Register(@Body() data:Player){
-          this.UserService.Register(data);
+          return this.UserService.Register(data);
           
      }
-     @Redirect('users/auth')
      @Post('Login')
      Login(@Body() data:any){
-          this.UserService.Login(data);
+          return this.UserService.Login(data);
      }
 }

@@ -1,6 +1,6 @@
 import { Controller, Delete, Get, Post, Put } from "@nestjs/common";
 import { AdminService } from "./admin.service";
-import { isAdmin } from "./isAdmin.decorator";
+// import { isAdmin } from "./isAdmin.decorator";
 
 @Controller('/admin')
 export class AdminController{
@@ -8,25 +8,25 @@ export class AdminController{
         
     }
 
-    @isAdmin()
+    // @isAdmin()
     @Get('')
     GetNews(){
         return {}
     }
 
-    @isAdmin()
+    // @isAdmin()
     @Post('')
     Add(){
         return {}
     }
 
-    @isAdmin()
+    // @isAdmin()
     @Delete('')
     Delete(){
         return {}
     }
 
-    @isAdmin()
+    // @isAdmin()
     @Put()
     Update(){
         return {}
