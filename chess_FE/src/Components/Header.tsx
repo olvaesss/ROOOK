@@ -6,7 +6,7 @@ import Register from "../Components/pages/Register";
 import Navigate from "../Components/navigate";
 import Main from "../Components/pages/Main";
 import About from "../Components/pages/About";
-import Account from "../Components/pages/Account";
+import Account from "./pages/AccountID";
 import Learning from "../Components/pages/Learning";
 import News from "../Components/pages/News";
 import Path404 from '../Components/pages/path404'
@@ -21,7 +21,7 @@ export default function App() {
           <Header />
           <Routes>
             <Route path="/learning" element={<Learning />} />
-            <Route path="/account" element={<Account />} />
+            <Route path="/:accountID" element={<Account />}/>
             <Route path="/play" element={<Lobby />} />
             <Route path="/news" element={<News />} />
             <Route path="/about" element={<About />} />
@@ -30,7 +30,6 @@ export default function App() {
             <Route path="/account/register" element={<Register />} />
             <Route path="/account/login" element={<Login />} />
           </Routes>
-          <Footer />
         </div>
       </Router>
     );
@@ -39,7 +38,8 @@ export default function App() {
   function Header() {
     return (
       <div className="Header">
-        <Link className="Logo" to="/"><h1>ROOK Chess</h1></Link>
+        <Link className="Logo" to="/">
+          <h1>ROOK Chess</h1></Link>
         <Navigate />
       </div>
     );

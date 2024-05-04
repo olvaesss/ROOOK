@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { API } from "../../axios";
+import Footer from "../Footer";
 
 // Определение интерфейса для данных от API
 interface ApiResponse {
@@ -54,6 +55,7 @@ const Main = () => {
                     )}
                 </div>
             )}
+            <Footer />
         </div>
     );
 };

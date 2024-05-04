@@ -6,7 +6,7 @@ const Navigate = ()=>{
         <div className="Navigation">
         <nav>
           <Link to="/learning">Обучение</Link>
-          <Link to="/account">Аккаунт</Link>
+          <Link to="/account/login">Аккаунт</Link>
           <Link to="/play">Играть</Link>
           <Link to="/news">Новости</Link>
           <Link to="/about">О нас</Link>

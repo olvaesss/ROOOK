@@ -31,11 +31,13 @@ h1{
   display: flex;
   background-color: rgba(47, 47, 47); 
   border-bottom: white solid 1px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 nav{
-  margin-top: 30px;
-  margin-left: 300px;
+  margin-top: 3%;
 }
 
 .Tile img{
@@ -94,6 +96,9 @@ nav{
   position: fixed;
   bottom: 0;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .Footer_Links{
@@ -102,14 +107,12 @@ nav{
 
 .Logo{
   margin-top: 1%;
-  width: 17%;
 }
 .Footer_Logo{
   margin-top: 2%;
 }
 .Navigation{
-  width: 57%;
-  margin-top: 1%;
+  width: 75%;
 }
 
 .Register_Component, .Login_Component{
@@ -132,3 +135,18 @@ nav{
 .MainTitles{
   margin-top: 1%;
 }
+
+input{
+  color: black;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+button{
+  color: black;
+}
+.account_navigation{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
