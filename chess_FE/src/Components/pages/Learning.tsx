@@ -5,7 +5,7 @@ import { API } from "../../axios";
 interface ApiResponse {
     titles: string[];
     text: string[];
-    image: any;
+    images: string[]; // Изменено название свойства для хранения массива ссылок на изображения
 }
 
 const Learning = () => {
@@ -34,21 +34,14 @@ const Learning = () => {
             ) : (
                 <div>
                     {data ? ( // Проверка наличия данных
-                        <div className="MainContainer">
-                            <div>
-                                <div className="MainTitles">
-                                    <h3>{data.titles[0]}</h3>
-                                    {data.text[0]}
+                        <div className="LearningContainer">
+                            {data.titles.map((title, index) => (
+                                <div key={index} className="LearnComponent">
+                                    <h3>{title}</h3>
+                                    <p>{data.text[index]}</p>
+                                    <img src={data.images[index]} alt={`Изображение ${index}`} /> {/* Добавлен вывод изображений */}
                                 </div>
-                                <div className="MainTitles">
-                                    <h3>{data.titles[1]}</h3>
-                                    {data.text[1]}
-                                </div>
-                                <div className="MainTitles">
-                                    <h3>{data.titles[2]}</h3>
-                                    {data.text[2]}
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     ) : (
                         <div>Данные не найдены</div> // Отображение сообщения, если данных нет
@@ -59,4 +52,4 @@ const Learning = () => {
     );
 };
 
-export default Learning
+export default Learning;

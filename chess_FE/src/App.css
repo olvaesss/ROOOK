@@ -150,3 +150,7 @@ button{
   text-align: center;
 }
 
+
+.LearnComponent{
+  column-count: 3;
+}
