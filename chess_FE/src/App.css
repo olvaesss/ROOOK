@@ -107,6 +107,7 @@ nav{
 
 .Logo{
   margin-top: 1%;
+  display:  flex;
 }
 .Footer_Logo{
   margin-top: 2%;
@@ -115,9 +116,6 @@ nav{
   width: 75%;
 }
 
-.Register_Component, .Login_Component{
-  background-color: rgba(100, 100, 100);
-}
 
 .Register_Component{
   width: 600px;
@@ -129,9 +127,6 @@ nav{
   align-items: center;  
 }
 
-.MainContainer{
-  margin-top: 1%;
-}
 .MainTitles{
   margin-top: 1%;
 }
@@ -150,7 +145,31 @@ button{
   text-align: center;
 }
 
+.LearnComponent, .MainComponent{
+  margin-top: 2%;
+  display: flex;
+}
 
-.LearnComponent{
-  column-count: 3;
+.logotype{
+  width: 100px;
+  height: 100px;
+}
+
+.text-image{
+  width: 350px;
+  height: 350px;
+}
+
+.Login_Container{
+  margin-top: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.Login_Component{
+  width: 400px;
+  background-color: rgba(100,100,100);
 }

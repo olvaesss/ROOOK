@@ -6,6 +6,7 @@ import Footer from "../Footer";
 interface ApiResponse {
     titles: string[];
     text: string[];
+    images:string[]
 }
 
 const Main = () => {
@@ -35,21 +36,16 @@ const Main = () => {
                 <div>
                     {data ? ( // Проверка наличия данных
                         <div className="MainContainer">
-                            <div>
-                                <div className="MainTitles">
-                                <h3>{data.titles[0]}</h3>
-                                {data.text[0]}
-                                </div>
-                                <div className="MainTitles">
-                                <h3>{data.titles[1]}</h3>
-                                {data.text[1]}
-                                </div>
-                                <div className="MainTitles">
-                                <h3>{data.titles[2]}</h3>
-                                {data.text[2]}
+                        {data.titles.map((title, index) => (
+                            <div key={index} className='MainComponent'>
+                                <img src={data.images[index]} alt={`Изображение ${index}`} className="text-image"/> {/* Добавлен вывод изображений */}
+                                <div>
+                                <h2>{title}</h2>
+                                <p>{data.text[index]}</p>
                                 </div>
                             </div>
-                        </div>
+                        ))}
+                    </div>
                     ) : (
                         <div>Данные не найдены</div> // Отображение сообщения, если данных нет
                     )}

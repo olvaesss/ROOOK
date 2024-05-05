@@ -39,6 +39,7 @@ export default function App() {
     return (
       <div className="Header">
         <Link className="Logo" to="/">
+          <img src="/images/logo.png" alt="" className="logotype"/>
           <h1>ROOK Chess</h1></Link>
         <Navigate />
       </div>

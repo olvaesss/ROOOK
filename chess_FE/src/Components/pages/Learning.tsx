@@ -36,10 +36,12 @@ const Learning = () => {
                     {data ? ( // Проверка наличия данных
                         <div className="LearningContainer">
                             {data.titles.map((title, index) => (
-                                <div key={index} className="LearnComponent">
-                                    <h3>{title}</h3>
+                                <div key={index} className='LearnComponent'>
+                                    <img src={data.images[index]} alt={`Изображение ${index}`} className="text-image" /> {/* Добавлен вывод изображений */}
+                                    <div>
+                                    <h2>{title}</h2>
                                     <p>{data.text[index]}</p>
-                                    <img src={data.images[index]} alt={`Изображение ${index}`} /> {/* Добавлен вывод изображений */}
+                                    </div>
                                 </div>
                             ))}
                         </div>
