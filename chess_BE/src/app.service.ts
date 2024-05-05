@@ -35,10 +35,8 @@ export class AppService {
         return {titles, text, images}
     }
 
-    async getNews(){
-        let titles = []
-        let text = []
-        let images = []
-        return {titles, text, images}
+
+    async getAbout(){
+
     }
 }
