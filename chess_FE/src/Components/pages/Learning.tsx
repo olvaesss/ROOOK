@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Learn from "./PageComponents/Learn";
 import { API } from "../../axios";
+import Footer from "../Footer";
 
 interface ApiResponse {
     titles: string[];
@@ -39,8 +40,8 @@ const Learning = () => {
                                 <div key={index} className='LearnComponent'>
                                     <img src={data.images[index]} alt={`Изображение ${index}`} className="text-image" /> {/* Добавлен вывод изображений */}
                                     <div>
-                                    <h2>{title}</h2>
-                                    <p>{data.text[index]}</p>
+                                        <h2>{title}</h2>
+                                        <p>{data.text[index]}</p>
                                     </div>
                                 </div>
                             ))}
@@ -50,6 +51,7 @@ const Learning = () => {
                     )}
                 </div>
             )}
+            <Footer />
         </div>
     );
 };

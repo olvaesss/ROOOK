@@ -14,9 +14,4 @@ export class AppController {
   GetLearnData(){
     return this.appService.getLearnTextAndImages()
   }
-  
-  @Get('/news')
-  GetNews(){
-    return this.appService.getNews()
-  }
 }

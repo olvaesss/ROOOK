@@ -10,38 +10,37 @@ import Account from "./pages/AccountID";
 import Learning from "../Components/pages/Learning";
 import News from "../Components/pages/News";
 import Path404 from '../Components/pages/path404'
-import Footer from "./Footer";
 
 
 
 export default function App() {
-    return (
-      <Router>
-        <div className="App">
-          <Header />
-          <Routes>
-            <Route path="/learning" element={<Learning />} />
-            <Route path="/:accountID" element={<Account />}/>
-            <Route path="/play" element={<Lobby />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/" element={<Main />} />
-            <Route path="*" element={<Path404 />} />
-            <Route path="/account/register" element={<Register />} />
-            <Route path="/account/login" element={<Login />} />
-          </Routes>
-        </div>
-      </Router>
-    );
-  }
-  
-  function Header() {
-    return (
-      <div className="Header">
-        <Link className="Logo" to="/">
-          <img src="/images/logo.png" alt="" className="logotype"/>
-          <h1>ROOK Chess</h1></Link>
-        <Navigate />
+  return (
+    <Router>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/learning" element={<Learning />} />
+          <Route path="/:accountID" element={<Account />} />
+          <Route path="/play" element={<Lobby />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/" element={<Main />} />
+          <Route path="*" element={<Path404 />} />
+          <Route path="/account/register" element={<Register />} />
+          <Route path="/account/login" element={<Login />} />
+        </Routes>
       </div>
-    );
-  }
+    </Router>
+  );
+}
+
+function Header() {
+  return (
+    <div className="Header">
+      <Link className="Logo" to="/">
+        <img src="/images/logo.png" alt="" className="logotype" />
+        <h1>ROOK Chess</h1></Link>
+      <Navigate />
+    </div>
+  );
+}
