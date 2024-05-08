@@ -10,6 +10,7 @@ import Account from "./pages/AccountID";
 import Learning from "../Components/pages/Learning";
 import News from "../Components/pages/News";
 import Path404 from '../Components/pages/path404'
+import Learn from "./pages/PageComponents/Learn";
 
 
 
@@ -21,6 +22,7 @@ export default function App() {
         <Routes>
           <Route path="/learning" element={<Learning />} />
           <Route path="/:accountID" element={<Account />} />
+          <Route path="/learn/:learnID" element={<Learn />} />
           <Route path="/play" element={<Lobby />} />
           <Route path="/news" element={<News />} />
           <Route path="/about" element={<About />} />

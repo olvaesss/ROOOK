@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Learn from "./PageComponents/Learn";
 import { API } from "../../axios";
 import Footer from "../Footer";
+import { Link } from "react-router-dom";
 
 interface ApiResponse {
+    id: string[];
     titles: string[];
     text: string[];
     images: string[]; // Изменено название свойства для хранения массива ссылок на изображения
@@ -34,7 +35,7 @@ const Learning = () => {
                 <div>Загрузка...</div>
             ) : (
                 <div>
-                    {data ? ( // Проверка наличия данных
+                    {data ? ( // Проверка наличия данных    
                         <div className="LearningContainer">
                             {data.titles.map((title, index) => (
                                 <div key={index} className='LearnComponent'>
@@ -42,6 +43,7 @@ const Learning = () => {
                                     <div>
                                         <h2>{title}</h2>
                                         <p>{data.text[index]}</p>
+                                        <Link to={`/learn/${data.id[index]}`}><button>Пордробнее</button></Link>
                                     </div>
                                 </div>
                             ))}

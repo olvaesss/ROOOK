@@ -51,7 +51,7 @@ const Login = () => {
                     <button type="submit">Продолжить</button>
                 </form>
                 <div className='register_link'>
-                    <text>Нет аккаунта? <Link to='/account/register'>Зарегестрируйтесь!</Link></text>
+                    <text>Нет аккаунта? <Link to='/account/register'>Зарегистрируйтесь!</Link></text>
                 </div>
             </div>
         </div>

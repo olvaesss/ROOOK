@@ -105,4 +105,14 @@ export class PrismaService {
       return false
     }
   }
+
+  async getLearnById(data:string){
+    try {
+      // return await this.prisma.learn({where:{ID_LEARN:data}})
+      //TODO make Learn schema for DB
+    } catch (err) {
+      console.log(err)
+      return null
+    }
+  }
 }
