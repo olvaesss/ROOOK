@@ -22,7 +22,7 @@ export class AuthService {
     }
 
     async CheckTokens(data:Tokens){
-        await this.jwtService.verifyAsync(data.refresh)
-        await this.jwtService.verifyAsync(data.access)
+        await this.jwtService.verifyAsync(data.refresh);
+        await this.jwtService.verifyAsync(data.access);
     }
 }

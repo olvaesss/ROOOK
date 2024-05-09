@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
 import { API } from '../../axios';
 import { Link } from 'react-router-dom';
+import { saveToken } from '../../assets/scripts/Token';
 
 const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('')
+
+    interface RegisterResponse {
+        data: {},
+        TOKENS: TOKENS
+    }
+
+    interface TOKENS {
+        access: string,
+        refresh: string
+    }
 
     const handleEmailChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
         setEmail(event.target.value);
@@ -22,11 +33,17 @@ const Register = () => {
     const handleRegister = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
         try {
-            const response = await API.post('users/register', {
-                email: email,
-                password: password
+            const response = await API.post<RegisterResponse | null>('users/register', {
+                USERNAME: name,
+                EMAIL: email,
+                PASSWORD: password,
+                CREATEDATE: new Date,
+                CONFIRMED: false,
+                PERMISSIONS: "player",
             });
+            saveToken(response.data?.TOKENS)
             console.log(response.data); // Обработка успешного ответа
+
         } catch (error) {
             console.error('Registration failed:', error); // Обработка ошибки
         }

@@ -2,9 +2,15 @@ export const getToken = () =>{
     return localStorage.getItem('tokens')
 }
 
-export const saveToken = (tokens:string) =>{
+
+interface TOKENS{
+    access:string,
+    refresh:string
+}
+export const saveToken = (tokens:TOKENS) =>{
     try {
-        localStorage.setItem('tokens', tokens)
+        localStorage.setItem('ACCESS', tokens.access)
+        localStorage.setItem('REFRESH', tokens.refresh)
         return console.log('saved')
     } catch (err) {
         return console.log(err)

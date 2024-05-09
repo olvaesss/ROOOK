@@ -8,7 +8,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = "postgresql://rook_user:rook_pass@localhost:3002/rook_user/schema=public"
 }
 
 model Player {
@@ -35,6 +35,12 @@ model News {
   TEXT      String
   TITLE     String
   HREF      String
+}
+
+model Learn {
+  ID_LEARN Int    @id
+  TITLE    String
+  TEXT     String
 }
 
 model Player_History {
