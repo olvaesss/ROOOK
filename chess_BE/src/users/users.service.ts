@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { Player } from '@prisma/client';
 import { AuthService } from 'src/auth/auth.service';
+import { LoginDTO } from './dto/LoginDTO';
 
 
 @Injectable()
@@ -9,8 +10,13 @@ export class UsersService {
     constructor( private Prisma:PrismaService, private AuthService:AuthService){}
 
     async getUserData(data:any){
-        const USER = await this.Prisma.getUser(data.EMAIL)
-        return {USER}
+        try {
+            const USER = await this.Prisma.getUser(data.EMAIL)
+            return USER
+        } catch (error) {
+            console.log(error)
+            return null
+        }
     }
 
     async Register(data:Player){//регестр сервиc
@@ -30,8 +36,9 @@ export class UsersService {
     async Login(data:Player){//логин сервис
         try {
             const USER = await this.Prisma.getUser(data.EMAIL)
+            console.log(data, USER)
             if(!USER) return null
-            if(USER.PASSWORD == data.PASSWORD)return true
+            if(USER.PASSWORD == data.PASSWORD)return USER
         } catch (err) {
             console.log(err)
             return null

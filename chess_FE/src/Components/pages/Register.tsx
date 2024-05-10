@@ -10,7 +10,7 @@ const Register = () => {
 
     interface RegisterResponse {
         data: {},
-        TOKENS: TOKENS
+        TOKENS: TOKENS | null
     }
 
     interface TOKENS {
@@ -41,6 +41,7 @@ const Register = () => {
                 CONFIRMED: false,
                 PERMISSIONS: "player",
             });
+            if (!response) return console.error('Failed')
             saveToken(response.data?.TOKENS)
             console.log(response.data); // Обработка успешного ответа
 

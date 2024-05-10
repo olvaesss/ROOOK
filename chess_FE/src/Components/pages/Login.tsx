@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import { API } from '../../axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     interface LoginResponse {
-
+        ID_PLAYER: number;
+        USERNAME: string;
+        EMAIL: string;
+        PASSWORD: string;
+        CREATEDATE: Date;
+        CONFIRMED: boolean;
+        PERMISSIONS: string;
     }
-
+    const navigate = useNavigate()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -19,12 +25,15 @@ const Login = () => {
     }
 
     async function LoginPost(email: string, password: string) {
-        API.post<LoginResponse | null>('users/login',
+        const response = await API.post<LoginResponse | null>('users/login',
             {
-                Email: email,
-                Password: password
+                EMAIL: email,
+                PASSWORD: password
             }
         )
+        console.log(response)
+        if (!response) return console.error("Повторите попытку")
+        navigate(`/account/${response.data?.ID_PLAYER}`)
     }
     const handleLogin = (event: { preventDefault: () => void; }) => {
         event.preventDefault();

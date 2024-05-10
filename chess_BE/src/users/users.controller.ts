@@ -7,7 +7,7 @@ import { Player } from '@prisma/client';
 export class UsersController {
      constructor(private UserService: UsersService, private Prisma:PrismaService){}
 
-     @Get('')
+     @Get('/:id')
      GetUserData(@Param() data:any){
           return this.UserService.getUserData(data)
      }
@@ -18,7 +18,9 @@ export class UsersController {
           
      }
      @Post('Login')
-     Login(@Body() data:any){
-          return this.UserService.Login(data);
+     async Login(@Body() data:any){
+          const USER = await this.UserService.Login(data);
+          console.log(USER)
+          return USER
      }
 }

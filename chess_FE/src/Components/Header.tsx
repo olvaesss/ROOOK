@@ -21,7 +21,7 @@ export default function App() {
         <Header />
         <Routes>
           <Route path="/learning" element={<Learning />} />
-          <Route path="/:accountID" element={<Account />} />
+          <Route path="account/:accountID" element={<Account />} />
           <Route path="/learn/:learnID" element={<Learn />} />
           <Route path="/play" element={<Lobby />} />
           <Route path="/news" element={<News />} />
