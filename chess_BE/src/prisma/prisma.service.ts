@@ -9,7 +9,33 @@ export class PrismaService {
     this.prisma = new PrismaClient();
   }
 
-  async getUser(Email:string):Promise<Player|null>{
+  async getUserById(id:number):Promise<Player|null>{
+    try {
+      const User = await this.prisma.player.findFirst ({where:{ID_PLAYER:id}})
+      return User
+    } catch (err) {
+      console.log(err)
+      return null
+    }
+  }
+
+  async getMatches(id:number){
+    try {
+      let Matches =[]
+      Matches = await this.prisma.game.findMany({where:{
+        OR:[
+          {ID_PLAYER_1:id},
+          {ID_PLAYER_2:id}
+        ]
+      }})
+      return Matches
+    } catch (err) {
+        console.log(err)
+        return null
+    }
+}
+
+  async getUserByEmail(Email:string):Promise<Player|null>{
     try {
       const User = await this.prisma.player.findFirst ({where:{EMAIL:Email}})
       return User

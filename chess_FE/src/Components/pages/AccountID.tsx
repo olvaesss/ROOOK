@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import { API } from '../../axios';
-import { error } from 'console';
 
+interface UserResponse {
+  USER: IUSER
+  Matches: Matches[]
+}
+
+interface Matches {
+  ID_GAME: string;
+  ID_PLAYER_1: number;
+  ID_PLAYER_2: number;
+  WINNER: number;
+  TURNS: string;
+}
 interface IUSER {
   ID_PLAYER: number;
   USERNAME: string;
@@ -12,12 +22,12 @@ interface IUSER {
 }
 const Account = () => {
   const { accountID } = useParams();
-  const [userData, setUserData] = useState<IUSER | null>(null);
+  const [userData, setUserData] = useState<UserResponse | null>(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await API.get<IUSER | null>(`users/${accountID}`);
+        const response = await API.get<UserResponse | null>(`users/${accountID}`);
         if (!response.data) return console.error("error")
         console.log(response.data)
         setUserData(response.data)
@@ -33,11 +43,36 @@ const Account = () => {
   return (
     <div>
       {userData ? (
-        <div>
-          <h1>Данные игрока:</h1>
-          <p>Имя: {userData.USERNAME}</p>
-          <p>Почта: {userData.EMAIL}</p>
-          {/* Additional user fields */}
+        <div className='Account_Container'>
+          <div className='User_Data'>
+            <h1>Данные игрока:</h1>
+            <p>Имя: {userData.USER.USERNAME}</p>
+            <p>Почта: {userData.USER.EMAIL}</p>
+            <p>Матчей: {userData.Matches.length}</p>
+          </div>
+          <div className='Matches'>
+            <h2>Последние 20 матчей</h2>
+            <table className='Matches_Table'>
+              <thead>
+                <tr>
+                  <th>№</th>
+                  <th>Игрок белых</th>
+                  <th>Игрок черных</th>
+                  <th>Победитель</th>
+                </tr>
+              </thead>
+              <tbody>
+                {userData.Matches.slice(0, 20).map((match, index) => (
+                  <tr key={match.ID_GAME}>
+                    <td>{index + 1}</td>
+                    <td>{match.ID_PLAYER_1}</td>
+                    <td>{match.ID_PLAYER_2}</td>
+                    <td>{match.WINNER}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       ) : (
         <p>Загрузка данных игрока...</p>

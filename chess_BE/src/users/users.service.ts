@@ -9,20 +9,23 @@ import { LoginDTO } from './dto/LoginDTO';
 export class UsersService {
     constructor( private Prisma:PrismaService, private AuthService:AuthService){}
 
-    async getUserData(data:any){
+    async getUserData(id:string){//Получение данных пользователя
         try {
-            const USER = await this.Prisma.getUser(data.EMAIL)
-            return USER
+            const ID = Number(id)
+            const USER = await this.Prisma.getUserById(ID)
+            const Matches = await this.Prisma.getMatches(ID)
+            return {USER, Matches}
         } catch (error) {
             console.log(error)
             return null
         }
     }
 
+
     async Register(data:Player){//регестр сервиc
         console.log(data)
         try {
-            const USER = await this.Prisma.getUser(data.EMAIL)
+            const USER = await this.Prisma.getUserByEmail(data.EMAIL)
             if(USER) return false
             await this.Prisma.createUser(data)
             const TOKENS = await this.AuthService.GiveTokens(data)
@@ -33,10 +36,9 @@ export class UsersService {
         }
     }
 
-    async Login(data:Player){//логин сервис
+    async Login(data:LoginDTO){//логин сервис
         try {
-            const USER = await this.Prisma.getUser(data.EMAIL)
-            console.log(data, USER)
+            const USER = await this.Prisma.getUserByEmail(data.EMAIL)
             if(!USER) return null
             if(USER.PASSWORD == data.PASSWORD)return USER
         } catch (err) {
