@@ -32,7 +32,7 @@ const Main = () => {
         <div className="Main">
             {loading ? ( // Проверка состояния загрузки
                 <div className="loading">
-                    <img src="/images/load.gif" alt="" />
+                    <img src="/images/load.gif" alt="Загрузка" />
                 </div>
             ) : (
                 <div>

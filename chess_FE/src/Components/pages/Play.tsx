@@ -42,10 +42,12 @@ const Play = () => {
     return (
         <div className="Play">
             {loading ? (
-                <div>Загрузка...</div>
+                <div className='loading'>
+                    <img src="/images/load.gif" alt="Загрузка" />
+                </div>
             ) : (
                 <div className="PlayContainer">
-                    <img src={`path_to_game_mode_image/${gameModes[selectedMode]?.MOD_ID}.jpg`} alt="Изображение режима игры" className="GameModeImage" />
+                    <img src={`/images/${gameModes[selectedMode]?.MODE_NAME}.png`} alt="Изображение режима игры" className="GameModeImage" />
                     <div className="GameDetails">
                         <h2>Выберите режим игры:</h2>
                         <select value={selectedMode} onChange={handleModeChange} className="GameModeSelect">
@@ -55,13 +57,13 @@ const Play = () => {
                                 </option>
                             ))}
                         </select>
+                        <button className="PlayButton">Играть</button>
                         {gameModes[selectedMode]?.TIME !== 0 && (
                             <div className="TimePlusDetails">
-                                <p>Время: {gameModes[selectedMode]?.TIME} секунд</p>
+                                <p>Время: {gameModes[selectedMode]?.TIME / 60} минут</p>
                                 <p>PLUS: {gameModes[selectedMode]?.PLUS} секунд за ход</p>
                             </div>
                         )}
-                        <button className="PlayButton">Играть</button>
                     </div>
                 </div>
             )}

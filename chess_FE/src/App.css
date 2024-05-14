@@ -257,3 +257,13 @@ select {
 option {
   color: black;
 }
+
+.GameModeImage {
+  width: 400px;
+  height: 400px;
+}
+
+.PlayContainer {
+  margin-top: 10%;
+  columns: 2;
+}
