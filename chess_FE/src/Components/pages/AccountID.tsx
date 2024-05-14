@@ -8,10 +8,10 @@ interface UserResponse {
 }
 
 interface Matches {
-  ID_GAME: string;
-  ID_PLAYER_1: number;
-  ID_PLAYER_2: number;
-  WINNER: number;
+  ID_GAME: number;
+  PLAYER_1: string;
+  PLAYER_2: string;
+  WINNER: string;
   TURNS: string;
 }
 interface IUSER {
@@ -65,8 +65,8 @@ const Account = () => {
                 {userData.Matches.slice(0, 20).map((match, index) => (
                   <tr key={match.ID_GAME}>
                     <td>{index + 1}</td>
-                    <td>{match.ID_PLAYER_1}</td>
-                    <td>{match.ID_PLAYER_2}</td>
+                    <td>{match.PLAYER_1}</td>
+                    <td>{match.PLAYER_2}</td>
                     <td>{match.WINNER}</td>
                   </tr>
                 ))}

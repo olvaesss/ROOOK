@@ -13,7 +13,8 @@ export class UsersService {
         try {
             const ID = Number(id)
             const USER = await this.Prisma.getUserById(ID)
-            const Matches = await this.Prisma.getMatches(ID)
+            const Matches = await this.Prisma.getMatches(USER.USERNAME)
+            console.log(Matches)
             return {USER, Matches}
         } catch (error) {
             console.log(error)

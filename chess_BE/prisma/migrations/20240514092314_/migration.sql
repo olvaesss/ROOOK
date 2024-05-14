@@ -1,0 +1,9 @@
+-- CreateTable
+CREATE TABLE "GameMods" (
+    "MOD_ID" SERIAL NOT NULL,
+    "MODE_NAME" TEXT NOT NULL,
+    "TIME" INTEGER NOT NULL,
+    "PLUS" INTEGER NOT NULL,
+
+    CONSTRAINT "GameMods_pkey" PRIMARY KEY ("MOD_ID")
+);

@@ -222,3 +222,38 @@ button {
 .login_link {
   margin-top: 5%;
 }
+
+
+.Matches {
+  border: solid white 1px;
+  background-color: rgba(95, 95, 95);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.Matches_Table {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: rgba(100, 100, 100);
+  width: 100%;
+  height: auto;
+}
+
+thead {
+  background-color: rgba(93, 93, 93);
+}
+
+td {
+  background-color: rgba(93, 93, 93);
+}
+
+select {
+  width: 200px;
+  color: black;
+}
+
+option {
+  color: black;
+}

@@ -22,11 +22,11 @@ model Player {
 }
 
 model Game {
-  ID_GAME     String @id
-  ID_PLAYER_1 Int
-  ID_PLAYER_2 Int
-  WINNER      Int
-  TURNS       String
+  ID_GAME  Int    @id @default(autoincrement())
+  PLAYER_1 String @default("")
+  PLAYER_2 String @default("")
+  WINNER   String
+  TURNS    String
 }
 
 model News {
@@ -47,4 +47,11 @@ model Player_History {
   PLAYER_ID Int    @id
   RESULT    Int
   MOD       String
+}
+
+model GameMods {
+  MOD_ID    Int    @id @default(autoincrement())
+  MODE_NAME String
+  TIME      Int
+  PLUS      Int
 }

@@ -19,13 +19,13 @@ export class PrismaService {
     }
   }
 
-  async getMatches(id:number){
+  async getMatches(Name:string){
     try {
       let Matches =[]
       Matches = await this.prisma.game.findMany({where:{
         OR:[
-          {ID_PLAYER_1:id},
-          {ID_PLAYER_2:id}
+          {PLAYER_1:Name},
+          {PLAYER_2:Name}
         ]
       }})
       return Matches
@@ -141,4 +141,15 @@ export class PrismaService {
       return null
     }
   }
+
+  async GetMods(){
+    try {
+      return await this.prisma.gameMods.findMany()
+    } catch (err) {
+      console.log(err)
+      return null
+    }
+  }
 }
+
+
