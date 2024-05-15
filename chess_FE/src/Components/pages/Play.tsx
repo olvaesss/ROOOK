@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { API } from '../../axios';
+import { useNavigate } from 'react-router-dom';
 
 interface GameResponse {
     MOD_ID: number;
@@ -9,6 +10,7 @@ interface GameResponse {
 }
 
 const Play = () => {
+    const navigate = useNavigate()
     const [gameModes, setGameModes] = useState<GameResponse[]>([]);
     const [selectedMode, setSelectedMode] = useState<number>(0);
     const [loading, setLoading] = useState<boolean>(true);
@@ -38,7 +40,15 @@ const Play = () => {
     const handleModeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedMode(Number(event.target.value));
     };
-
+    const createRoom = async () => {
+        try {
+            const response = await API.post("/game");
+            const roomId = response.data.roomID;
+            navigate(`${roomId}`)
+        } catch (error) {
+            console.error("Ошибка при создании комнаты", error);
+        }
+    };
     return (
         <div className="Play">
             {loading ? (
@@ -57,7 +67,8 @@ const Play = () => {
                                 </option>
                             ))}
                         </select>
-                        <button className="PlayButton">Играть</button>
+                        <button onClick={createRoom} className="PlayButton">Создать</button>
+                        <button className="PlayButton">Найти</button>
                         {gameModes[selectedMode]?.TIME !== 0 && (
                             <div className="TimePlusDetails">
                                 <p>Время: {gameModes[selectedMode]?.TIME / 60} минут</p>
