@@ -9,7 +9,7 @@ export class GameController{
 
     @Get()
     async GetGameMode(){
-        return await this.gameService.GetGameMods()
+        return await this.gameService.GetGameMods();
     }
 
     @Post()

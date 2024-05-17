@@ -1,15 +1,26 @@
 import React, { useState } from 'react';
 import { API } from '../../axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { saveToken } from '../../assets/scripts/Token';
 
 const Register = () => {
+    const navigate = useNavigate()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('')
 
+    interface IUSER {
+        ID_PLAYER: number;
+        USERNAME: string;
+        EMAIL: string;
+        PASSWORD: string;
+        CREATEDATE: Date;
+        CONFIRMED: boolean;
+        PERMISSIONS: string;
+    }
+
     interface RegisterResponse {
-        data: {},
+        USER: IUSER,
         TOKENS: TOKENS | null
     }
 
@@ -42,9 +53,9 @@ const Register = () => {
                 PERMISSIONS: "player",
             });
             if (!response) return console.error('Failed')
+            console.log(response.data)
             saveToken(response.data?.TOKENS)
-            console.log(response.data); // Обработка успешного ответа
-
+            navigate(`/account/${response.data?.USER.ID_PLAYER}`)
         } catch (error) {
             console.error('Registration failed:', error); // Обработка ошибки
         }

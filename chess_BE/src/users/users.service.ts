@@ -26,11 +26,12 @@ export class UsersService {
     async Register(data:Player){//регестр сервиc
         console.log(data)
         try {
-            const USER = await this.Prisma.getUserByEmail(data.EMAIL)
+            let USER = await this.Prisma.getUserByEmail(data.EMAIL)
             if(USER) return false
             await this.Prisma.createUser(data)
+            USER = await this.Prisma.getUserByEmail(data.EMAIL)
             const TOKENS = await this.AuthService.GiveTokens(data)
-            return {data, TOKENS}
+            return {USER, TOKENS}
         } catch (err) {
             console.log(err)
             return null
@@ -39,6 +40,7 @@ export class UsersService {
 
     async Login(data:LoginDTO){//логин сервис
         try {
+            // this.AuthService.CheckTokens()
             const USER = await this.Prisma.getUserByEmail(data.EMAIL)
             if(!USER) return null
             if(USER.PASSWORD == data.PASSWORD)return USER
