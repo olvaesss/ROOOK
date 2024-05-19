@@ -10,7 +10,7 @@ export class UsersController {
      constructor(private UserService: UsersService, private Prisma:PrismaService){}
 
      @Get('/:id')
-     @UseGuards(AuthGuard('jwt'))
+     // @UseGuards(AuthGuard('jwt'))
      GetUserData(@Param('id') id:string){
           return this.UserService.getUserData(id)
      }
