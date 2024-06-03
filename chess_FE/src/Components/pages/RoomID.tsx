@@ -10,7 +10,7 @@ const store = new Store
 const RoomID = () => {
 
     return (
-        <div>
+        <div className="Room">
             <StoreContext.Provider value={store}>
                 <ChessPage />
             </StoreContext.Provider>

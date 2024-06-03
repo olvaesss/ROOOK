@@ -111,7 +111,7 @@ export default class Cell {
 		return true;
 	}
 
-	setFigure(figure: Figure) {
+	private setFigure(figure: Figure) {
 		// add figure to cell
 		this.figure = figure;
 		// add cell (this) to figure of new cell (this)

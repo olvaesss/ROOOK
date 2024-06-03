@@ -14,13 +14,12 @@ export enum FigureName {
 }
 
 export class Figure {
-	color: Colors;
-	logo: typeof logo | null;
 	cell: Cell;
-	name: FigureName;
-	id: number;
 	checked?: boolean;
-
+	color: Colors;
+	id: number;
+	logo: typeof logo | null;
+	name: FigureName;
 	constructor(color: Colors, cell: Cell) {
 		this.color = color;
 		this.cell = cell;

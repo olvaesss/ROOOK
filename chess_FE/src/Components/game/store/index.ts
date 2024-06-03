@@ -5,14 +5,28 @@ import { makeAutoObservable } from 'mobx';
 import Player from '..//resources/models/Player';
 
 export default class chessStore {
-	private _gameTime: number | null;
 	private _currentPlayer: Player | null;
-
-	private _isGameStarted: boolean;
+	private _gameTime: number | null;
+	private _isAiEnabled: boolean;
 	private _isGameEnded: boolean;
+	private _isGameStarted: boolean;
 	private _isStalemated: boolean;
 
-	private _isAiEnabled: boolean;
+	get aiStatus(): boolean {
+		return this._isAiEnabled;
+	}
+
+	get currentPlayer(): Player | null {
+		return this._currentPlayer;
+	}
+
+	get gameEndStatus(): boolean {
+		return this._isGameEnded;
+	}
+
+	get gameStalemateStatus(): boolean {
+		return this._isStalemated;
+	}
 
 	constructor() {
 		this._gameTime = null;
@@ -63,24 +77,8 @@ export default class chessStore {
 		return this._isGameStarted;
 	}
 
-	get gameEndStatus(): boolean {
-		return this._isGameEnded;
-	}
-
-	get gameStalemateStatus(): boolean {
-		return this._isStalemated;
-	}
-
 	get gameTime(): number | null {
 		return this._gameTime;
-	}
-
-	get currentPlayer(): Player | null {
-		return this._currentPlayer;
-	}
-
-	get aiStatus(): boolean {
-		return this._isAiEnabled;
 	}
 }
 

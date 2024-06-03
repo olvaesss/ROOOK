@@ -42,6 +42,13 @@ nav {
   margin-top: 3%;
 }
 
+.Room {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .Tile img {
   width: 48px;
   height: 48px;

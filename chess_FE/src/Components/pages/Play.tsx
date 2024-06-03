@@ -10,10 +10,11 @@ interface GameResponse {
 }
 
 const Play = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [gameModes, setGameModes] = useState<GameResponse[]>([]);
     const [selectedMode, setSelectedMode] = useState<number>(0);
     const [loading, setLoading] = useState<boolean>(true);
+    const [showModal, setShowModal] = useState<boolean>(false);
 
     useEffect(() => {
         const fetchGameModes = async () => {
@@ -26,29 +27,31 @@ const Play = () => {
                 setLoading(false);
             }
         };
-
         fetchGameModes();
     }, []);
 
     useEffect(() => {
         // Обновление информации о выбранном режиме игры
         const selectedGameMode = gameModes.find(mode => mode.MOD_ID === selectedMode);
-        console.log(selectedGameMode, selectedMode)
+        console.log(selectedGameMode, selectedMode);
         // Дополнительная логика для обновления состояния, если это необходимо
     }, [selectedMode, gameModes]);
 
     const handleModeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedMode(Number(event.target.value));
     };
+
     const createRoom = async () => {
         try {
             const response = await API.post("/game");
             const roomId = response.data.roomID;
-            navigate(`${roomId}`)
+            setShowModal(false);
+            navigate(`${roomId}`);
         } catch (error) {
             console.error("Ошибка при создании комнаты", error);
         }
     };
+
     return (
         <div className="Play">
             {loading ? (
@@ -62,12 +65,10 @@ const Play = () => {
                         <h2>Выберите режим игры:</h2>
                         <select value={selectedMode} onChange={handleModeChange} className="GameModeSelect">
                             {gameModes.map((mode) => (
-                                <option key={mode.MOD_ID - 1} value={mode.MOD_ID - 1}>
-                                    {mode.MODE_NAME}
-                                </option>
+                                <option key={mode.MOD_ID} value={mode.MOD_ID}>{mode.MODE_NAME}</option>
                             ))}
                         </select>
-                        <button onClick={createRoom} className="PlayButton">Создать</button>
+                        <button onClick={() => setShowModal(true)} className="PlayButton">Создать</button>
                         <button className="PlayButton">Найти</button>
                         {gameModes[selectedMode]?.TIME !== 0 && (
                             <div className="TimePlusDetails">
@@ -75,6 +76,16 @@ const Play = () => {
                                 <p>PLUS: {gameModes[selectedMode]?.PLUS} секунд за ход</p>
                             </div>
                         )}
+                    </div>
+                </div>
+            )}
+
+            {/* Модальное окно для поиска комнаты */}
+            {showModal && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <span className="close" onClick={() => setShowModal(false)}>&times;</span>
+                        <p>Поиск комнаты...</p>
                     </div>
                 </div>
             )}

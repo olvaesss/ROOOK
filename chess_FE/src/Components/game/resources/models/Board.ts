@@ -23,7 +23,13 @@ interface IEnPassant {
 }
 
 class Board {
-	// cells grid
+	
+	blackCastle: ICastle = {
+		withLeftRook: true,
+		withRightRook: true,
+	};
+	blackKing: Cell | undefined = undefined;
+// cells grid
 	cells: Cell[][] = [];
 
 	// lost figures
@@ -32,19 +38,11 @@ class Board {
 
 	// kings cells
 	whiteKing: Cell | undefined = undefined;
-	blackKing: Cell | undefined = undefined;
-
 	// castles possibilities
 	whiteCastle: ICastle = {
 		withLeftRook: true,
 		withRightRook: true,
 	};
-
-	blackCastle: ICastle = {
-		withLeftRook: true,
-		withRightRook: true,
-	};
-
 	enPassant: IEnPassant | undefined = undefined;
 
 	public initCells() {
