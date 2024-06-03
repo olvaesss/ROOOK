@@ -1,28 +1,23 @@
-import { WebSocketGateway, OnGatewayConnection, OnGatewayDisconnect, SubscribeMessage, MessageBody, ConnectedSocket } from '@nestjs/websockets';
-import { Socket } from 'socket.io';
+import { WebSocketGateway, OnGatewayConnection, OnGatewayDisconnect, SubscribeMessage, MessageBody, ConnectedSocket, ServerAndEventStreamsHost, WebSocketServer } from '@nestjs/websockets';
+import { Server, Socket } from 'socket.io';
 import { GameService } from './game.service';
 
 @WebSocketGateway()
 export class GameGateway implements OnGatewayConnection, OnGatewayDisconnect {
   constructor(private readonly gameService: GameService) {}
 
+  @WebSocketServer() server:Server
+
+  @SubscribeMessage('createRoom')
+  async createRoom(@ConnectedSocket() socket: Socket) {
+    return this.gameService.CreateRoom(socket);
+  }
+
   handleConnection(socket: Socket): void {
     console.log(`Client connected: ${socket.id}`);
-
-    socket.on('createRoom', () => {
-      this.gameService.CreateRoom(socket);
-    });
-
-    // Handle other socket events
-
-    socket.on('disconnect', () => {
-      console.log(`Client disconnected: ${socket.id}`);
-      // Handle disconnection logic if needed
-    });
   }
 
   handleDisconnect(socket: Socket): void {
     console.log(`Client disconnected: ${socket.id}`);
-    // Handle disconnection logic if needed
   }
 }

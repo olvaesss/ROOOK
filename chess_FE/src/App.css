@@ -42,6 +42,27 @@ nav {
   margin-top: 3%;
 }
 
+
+.NewsContainer {
+  margin-top: 10px;
+  display: flex;
+}
+
+.NewsImg {
+  width: 100px;
+  height: 100px;
+}
+
+.NewsComponent {
+  margin-left: 20px;
+  height: 400px;
+  width: 300px;
+  background-color: rgba(47, 47, 47);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .Room {
   display: flex;
   justify-content: center;

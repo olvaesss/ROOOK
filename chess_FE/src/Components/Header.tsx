@@ -12,6 +12,7 @@ import Path404 from '../Components/pages/path404'
 import Learn from "./pages/PageComponents/Learn";
 import Play from "./pages/Play";
 import RoomID from "./pages/RoomID";
+import CreateNews from "./pages/CreateNews";
 
 
 
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/learn/:learnID" element={<Learn />} />
           <Route path="/play" element={<Play />} />
           <Route path="/news" element={<News />} />
+          <Route path="/news/create" element={<CreateNews />} />
           <Route path="/about" element={<About />} />
           <Route path="/" element={<Main />} />
           <Route path="*" element={<Path404 />} />

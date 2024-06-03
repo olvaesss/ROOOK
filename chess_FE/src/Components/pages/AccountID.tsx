@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { API } from '../../axios';
+import { randomUUID } from 'crypto';
 
 interface UserResponse {
   USER: IUSER
@@ -49,6 +50,7 @@ const Account = () => {
             <p>Имя: {userData.USER.USERNAME}</p>
             <p>Почта: {userData.USER.EMAIL}</p>
             <p>Матчей: {userData.Matches.length}</p>
+            <p>Достижения: { }</p>
           </div>
           <div className='Matches'>
             <h2>Последние 20 матчей</h2>
@@ -73,11 +75,13 @@ const Account = () => {
               </tbody>
             </table>
           </div>
+          <div className='CreateNews'><Link to={`/news/create`}><button>Создайте новость</button></Link></div>
         </div>
       ) : (
         <p>Загрузка данных игрока...</p>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 };
 

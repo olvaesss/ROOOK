@@ -7,9 +7,10 @@ import { AdminModule } from './admin/admin.module';
 import { LearnModule } from './learning/learn.module';
 import { GameModule } from './game/game.module';
 import { AuthModule } from './auth/auth.module';
+import { NewsModule } from './news/news.module';
 
 @Module({
-  imports: [UsersModule, AdminModule, LearnModule,GameModule,AuthModule],
+  imports: [UsersModule, AdminModule, LearnModule,GameModule,AuthModule, NewsModule ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })

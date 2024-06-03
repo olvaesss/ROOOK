@@ -13,7 +13,8 @@ export class GameService {
 
   async CreateRoom(socket: Socket) {
     const roomID = randomUUID();
-    // Дополнительная логика для создания комнаты
     socket.emit('roomCreated', { roomID });
+    console.log(roomID)
+    return roomID
   }
 }

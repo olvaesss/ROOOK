@@ -90,6 +90,7 @@ export class PrismaService {
   async getAllNews(){
     try {
       const NEWS = await this.prisma.news.findMany()
+      console.log(NEWS)
       return NEWS
     } catch (err) {
       console.log(err)

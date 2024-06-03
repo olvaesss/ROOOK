@@ -43,9 +43,9 @@ const Play = () => {
 
     const createRoom = async () => {
         try {
+            setShowModal(true);
             const response = await API.post("/game");
             const roomId = response.data.roomID;
-            setShowModal(false);
             navigate(`${roomId}`);
         } catch (error) {
             console.error("Ошибка при создании комнаты", error);
@@ -68,8 +68,7 @@ const Play = () => {
                                 <option key={mode.MOD_ID} value={mode.MOD_ID}>{mode.MODE_NAME}</option>
                             ))}
                         </select>
-                        <button onClick={() => setShowModal(true)} className="PlayButton">Создать</button>
-                        <button className="PlayButton">Найти</button>
+                        <button onClick={createRoom} className="PlayButton">Играть</button>
                         {gameModes[selectedMode]?.TIME !== 0 && (
                             <div className="TimePlusDetails">
                                 <p>Время: {gameModes[selectedMode]?.TIME / 60} минут</p>

@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Post, Put } from "@nestjs/common";
 import { NewsService } from "./news.service";
 import { News } from "@prisma/client";
 
@@ -17,7 +17,8 @@ export class NewsController{
     }
 
     @Post('')
-    CreateNews(data:News){
+    CreateNews(@Body() data:News){
+        console.log(data)
         return this.newsService.addNews(data)
     }
 
