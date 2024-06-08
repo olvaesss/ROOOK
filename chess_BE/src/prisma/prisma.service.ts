@@ -133,10 +133,9 @@ export class PrismaService {
     }
   }
 
-  async getLearnById(data:string){
+  async getLearnById(data:any){
     try {
-      // return await this.prisma.learn({where:{ID_LEARN:data}})
-      //TODO make Learn schema for DB
+      const learn = await this.prisma.learn.findFirst({where:{ID_LEARN:data}})
     } catch (err) {
       console.log(err)
       return null

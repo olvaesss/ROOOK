@@ -1,6 +1,7 @@
 import React, { ChangeEventHandler, useState } from 'react';
 import { API } from '../../axios';
 import { useNavigate } from 'react-router-dom';
+import { randomUUID } from 'crypto';
 
 const CreateNewsPage = () => {
     const navigate = useNavigate();
@@ -24,10 +25,6 @@ const CreateNewsPage = () => {
         setTitle(event.target.value);
     }
 
-    const handleAuthorChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
-        setAuthor(event.target.value);
-    }
-
     const handleTextChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
         setText(event.target.value);
     }
@@ -47,9 +44,9 @@ const CreateNewsPage = () => {
     const handleCreateNews = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
         try {
+            console.log(image?.name)
             const formData = new FormData();
             formData.append('TITLE', title);
-            formData.append('AUTHOR', author);
             formData.append('TEXT', text);
             formData.append('LINK', link);
             if (image) {
@@ -59,10 +56,9 @@ const CreateNewsPage = () => {
             const response = await API.post<News | null>(`/news`,
                 {
                     TITLE: title,
-                    AUTHOR: author,
                     TEXT: text,
-                    LINK: link,
-                    IMAGE: image,
+                    HREF: link,
+                    IMAGE: image?.name,
                     CREATEDATE: new Date
                 });
             if (!response) return console.error('Failed');
@@ -80,7 +76,6 @@ const CreateNewsPage = () => {
                     <div className='TextForInput'>
                         <text>
                             Заголовок
-                            Автор
                             Текст
                             Ссылка
                             Изображение
@@ -88,7 +83,6 @@ const CreateNewsPage = () => {
                     </div>
                     <div className='Inputs'>
                         <input name='Title' type="text" value={title} onChange={handleTitleChange} placeholder='Заголовок'></input>
-                        <input name='Author' type="text" value={author} onChange={handleAuthorChange} placeholder='Автор'></input>
                         <input name="Text" type='text' onChange={handleTextChange} placeholder="Текст"></input>
                         <input name="Link" type="text" value={link} onChange={handleLinkChange} placeholder="Ссылка"></input>
                         <input name="Image" type="file" onChange={handleImageChange} placeholder="Изображение"></input>

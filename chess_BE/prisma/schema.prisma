@@ -30,11 +30,13 @@ model Game {
 }
 
 model News {
-  ID_NEWS   Int    @id
-  ID_PLAYER Int
-  TEXT      String
-  TITLE     String
-  HREF      String
+  ID_NEWS    Int      @id @default(autoincrement())
+  ID_PLAYER  Int
+  TEXT       String
+  TITLE      String
+  HREF       String
+  IMAGE      String
+  CREATEDATE DateTime
 }
 
 model Learn {

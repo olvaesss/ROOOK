@@ -61,6 +61,10 @@ const ChessPage: React.FC = observer(() => {
 				</div>
 			</div>
 
+			<div className='Moves'>
+				Moves
+			</div>
+
 			<Modal />
 		</main>
 	);

@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { News } from "@prisma/client";
+import { randomUUID } from "crypto";
 import { PrismaService } from "src/prisma/prisma.service";
 
 @Injectable()
@@ -18,13 +19,14 @@ export class NewsService{
         return News
     }
 
-    async addNews(data:News){
+    async addNews(data:any){
         try {
+            data.ID_PLAYER=1
             await this.Prisma.addNews(data)
             return data
         } catch (err) {
             console.log(err)
-            return false
+            return null
         }
     }
 

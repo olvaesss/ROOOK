@@ -17,7 +17,7 @@ export class NewsController{
     }
 
     @Post('')
-    CreateNews(@Body() data:News){
+    CreateNews(@Body() data:any){
         console.log(data)
         return this.newsService.addNews(data)
     }

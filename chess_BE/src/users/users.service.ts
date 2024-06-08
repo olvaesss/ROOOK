@@ -1,13 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { Player } from '@prisma/client';
-import { AuthService } from 'src/auth/auth.service';
 import { LoginDTO } from './dto/LoginDTO';
 
 
 @Injectable()
 export class UsersService {
-    constructor( private Prisma:PrismaService, private AuthService:AuthService){}
+    constructor( private Prisma:PrismaService){}
 
     async getUserData(id:string){//Получение данных пользователя
         try {
@@ -30,8 +29,8 @@ export class UsersService {
             if(USER) return false
             await this.Prisma.createUser(data)
             USER = await this.Prisma.getUserByEmail(data.EMAIL)
-            const TOKENS = await this.AuthService.GiveTokens(data)
-            return {USER, TOKENS}
+            // const TOKENS = await this.AuthService.GiveTokens(data)
+            return {USER}
         } catch (err) {
             console.log(err)
             return null

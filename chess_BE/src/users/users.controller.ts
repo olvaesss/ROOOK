@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Redirect, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { Player } from '@prisma/client';
@@ -9,8 +9,8 @@ import { AuthGuard } from '@nestjs/passport';
 export class UsersController {
      constructor(private UserService: UsersService, private Prisma:PrismaService){}
 
+     @UseGuards(AuthGuard('jwt'))
      @Get('/:id')
-     // @UseGuards(AuthGuard('jwt'))
      GetUserData(@Param('id') id:string){
           return this.UserService.getUserData(id)
      }

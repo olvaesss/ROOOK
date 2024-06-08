@@ -52,7 +52,7 @@ const Register = () => {
                 CONFIRMED: false,
                 PERMISSIONS: "player",
             });
-            if (!response) return console.error('Failed')
+            if (!response) navigate('./error')
             console.log(response.data)
             saveToken(response.data?.TOKENS)
             navigate(`/account/${response.data?.USER.ID_PLAYER}`)

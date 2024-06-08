@@ -8,8 +8,8 @@ import { JwtStrategy } from './jwtStrategy';
   imports: [
     PassportModule,
     JwtModule.register({
-      secretOrPrivateKey: 'dsaewrupsberpuignpeirjngpj2iuh2',
-      signOptions: { expiresIn: '60s' },
+      secretOrPrivateKey: 'jwt_secret',
+      signOptions: { expiresIn: '1d' },
     }),
   ],
   controllers: [],

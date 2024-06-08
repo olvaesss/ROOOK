@@ -13,6 +13,7 @@ import Learn from "./pages/PageComponents/Learn";
 import Play from "./pages/Play";
 import RoomID from "./pages/RoomID";
 import CreateNews from "./pages/CreateNews";
+import Admin from "./pages/Admin";
 
 
 
@@ -34,6 +35,7 @@ export default function App() {
           <Route path="*" element={<Path404 />} />
           <Route path="/account/register" element={<Register />} />
           <Route path="/account/login" element={<Login />} />
+          <Route path="/admin/:id" element={<Admin />} />
         </Routes>
       </div>
     </Router>

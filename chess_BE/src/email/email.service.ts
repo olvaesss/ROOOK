@@ -8,6 +8,5 @@ export class EmailService{
     }
 
     async ConfirmEmail(Email:string){
-        
     }
 }

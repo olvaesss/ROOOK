@@ -9,20 +9,30 @@ export class AdminController{
     }
 
     // @isAdmin()
+    @Get(':id')
+    GetAdminData(){
+        return {}
+    }
+
     @Get('')
     GetNews(){
         return {}
     }
 
+    @Get('')
+    GetPlayers(){
+        return {}
+    }
+
     // @isAdmin()
     @Post('')
-    Add(){
+    AproveNews(){
         return {}
     }
 
     // @isAdmin()
     @Delete('')
-    Delete(){
+    DeleteNews(){
         return {}
     }
 
