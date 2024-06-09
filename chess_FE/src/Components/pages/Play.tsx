@@ -45,7 +45,7 @@ const Play = () => {
         try {
             setShowModal(true);
             const response = await API.post("/game");
-            const roomId = response.data.roomID;
+            const roomId = response.data;
             navigate(`${roomId}`);
         } catch (error) {
             console.error("Ошибка при создании комнаты", error);
@@ -65,7 +65,7 @@ const Play = () => {
                         <h2>Выберите режим игры:</h2>
                         <select value={selectedMode} onChange={handleModeChange} className="GameModeSelect">
                             {gameModes.map((mode) => (
-                                <option key={mode.MOD_ID} value={mode.MOD_ID}>{mode.MODE_NAME}</option>
+                                <option key={mode.MOD_ID - 1} value={mode.MOD_ID - 1}>{mode.MODE_NAME}</option>
                             ))}
                         </select>
                         <button onClick={createRoom} className="PlayButton">Играть</button>

@@ -12,10 +12,9 @@ interface TProps {
 	board: Board;
 	setBoard: (board: Board) => void;
 	swapPlayer: () => void;
-	currentPlayerBadge: React.RefObject<HTMLSpanElement> | null;
 }
 
-const GameBoard: React.FC<TProps> = observer(({ board, setBoard, swapPlayer, currentPlayerBadge }) => {
+const GameBoard: React.FC<TProps> = observer(({ board, setBoard, swapPlayer }) => {
 	const store = useStore();
 	const currentPlayer = store.currentPlayer,
 		isGameEnded = store.gameEndStatus,
@@ -114,10 +113,8 @@ const GameBoard: React.FC<TProps> = observer(({ board, setBoard, swapPlayer, cur
 			board={board}
 			selectedCell={selectedCell}
 			setSelectedCell={setSelectedCell}
-			currentPlayerBadge={currentPlayerBadge}
 			checkmateCheck={checkmateCheck}
-			swapPlayer={swapPlayer}
-		/>
+			swapPlayer={swapPlayer} />
 	);
 });
 

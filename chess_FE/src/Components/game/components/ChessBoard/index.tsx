@@ -16,14 +16,15 @@ interface TProps {
 	selectedCell: Cell | null;
 	setSelectedCell: React.Dispatch<React.SetStateAction<Cell | null>>;
 
-	currentPlayerBadge: React.RefObject<HTMLSpanElement> | null;
 
 	checkmateCheck: () => void;
 	swapPlayer: () => void;
 }
 
+
+
 const ChessBoard: React.FC<TProps> = observer(
-	({ board, selectedCell, setSelectedCell, currentPlayerBadge, checkmateCheck, swapPlayer }) => {
+	({ board, selectedCell, setSelectedCell, checkmateCheck, swapPlayer }) => {
 		const store = useStore();
 		const currentPlayer = store.currentPlayer,
 			isGameEnded = store.gameEndStatus,
@@ -43,9 +44,10 @@ const ChessBoard: React.FC<TProps> = observer(
 					selectedCell,
 					setSelectedCell,
 				});
-
+				store.addMove(selectedCell, cell)
 				checkmateCheck(); // checkmate check
 				swapPlayer(); // swap player
+
 			} else {
 				// PICKING CELL
 				if (cell.blocked) return;
@@ -58,8 +60,6 @@ const ChessBoard: React.FC<TProps> = observer(
 
 		return (
 			<>
-				<StatusBar currentPlayerBadge={currentPlayerBadge} />
-
 				<div className={css.board}>
 					{board.cells.map((row, index) => (
 						<React.Fragment key={index}>

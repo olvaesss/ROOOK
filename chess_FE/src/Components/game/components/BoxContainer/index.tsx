@@ -11,7 +11,7 @@ interface LostFiguresProps {
 const BoxContainer: React.FC<LostFiguresProps> = ({ title, figures }) => {
 	return (
 		<div className={css.lost}>
-			<h3>{title}</h3>
+			<h4>{title}</h4>
 			{figures.map(figure => (
 				<div className={css.boxRow} key={figure.id}>
 					{figure.logo && <img width={20} height={20} src={figure.logo} />} {figure.name}

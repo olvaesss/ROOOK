@@ -70,7 +70,6 @@ const Timer: React.FC<TimerProps> = observer(({ restart }) => {
 
 	return (
 		<section className={css.timer}>
-			<Button onClick={handleRestart}>Новая игра</Button>
 			{gameTime && (
 				<div className={css.time}>
 					<h2>

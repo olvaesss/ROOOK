@@ -11,6 +11,7 @@ import SettingsForm from '../../components/SettingsForm';
 import GameBoard from '../../components/GameBoard';
 import Timer from '../../components/Timer';
 import Modal from '../../components/Modal';
+import StatusBar from '../../components/StatusBar';
 
 const ChessPage: React.FC = observer(() => {
 	// store
@@ -34,9 +35,6 @@ const ChessPage: React.FC = observer(() => {
 		newBoard.initCells();
 		newBoard.addFigures();
 		setBoard(newBoard);
-
-		console.log(store)
-
 		store.setCurrentPlayer(whitePlayer);
 		store.restartGame();
 		currentPlayerBadge?.current?.classList.remove('flipped');
@@ -48,24 +46,43 @@ const ChessPage: React.FC = observer(() => {
 
 	return (
 		<main>
-			<SettingsForm restart={restart} />
-
-			<GameBoard board={board} setBoard={setBoard} swapPlayer={swapPlayer} currentPlayerBadge={currentPlayerBadge} />
-			<Timer restart={restart} />
-
-			<div>
-				<h3>Побеждённые фигуры</h3>
-				<div className='lost-figures'>
-					<BoxContainer title={'Чёрные'} figures={board.lostBlackFigures} />
-					<BoxContainer title={'Белые'} figures={board.lostWhiteFigures} />
+			<div className='settings'>
+				<SettingsForm restart={restart} />
+				<Timer restart={restart} />
+				<StatusBar currentPlayerBadge={currentPlayerBadge} />
+			</div>
+			<div className='board'>
+				<GameBoard board={board} setBoard={setBoard} swapPlayer={swapPlayer} />
+			</div>
+			<div className='info'>
+				<div>
+					<h3>Побеждённые фигуры</h3>
+					<div className='lost-figures'>
+						<BoxContainer title={'Чёрные'} figures={board.lostBlackFigures} />
+						<BoxContainer title={'Белые'} figures={board.lostWhiteFigures} />
+					</div>
 				</div>
-			</div>
 
-			<div className='Moves'>
-				Moves
+				<div className='Moves'>
+					<table className='Moves_Table'>
+						<thead>
+							<tr>
+								<th>№</th>
+								<th>Фигура</th>
+							</tr>
+						</thead>
+						<tbody>
+							{store.moves.map((move, index) => (
+								<tr key={index}>
+									<td>{index + 1}</td>
+									<td>{move}</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
+				<Modal />
 			</div>
-
-			<Modal />
 		</main>
 	);
 });

@@ -15,6 +15,6 @@ export class GameController {
   async CreateRoom() {
     // You can't call handleConnection() directly from the controller
     // Instead, you can emit an event to the gateway to create a room
-    this.gameGateway.server.emit('createRoom');
+    return this.gameService.CreateRoom()
   }
 }

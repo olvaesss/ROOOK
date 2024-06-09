@@ -8,11 +8,6 @@ export class GameGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
   @WebSocketServer() server:Server
 
-  @SubscribeMessage('createRoom')
-  async createRoom(@ConnectedSocket() socket: Socket) {
-    return this.gameService.CreateRoom(socket);
-  }
-
   handleConnection(socket: Socket): void {
     console.log(`Client connected: ${socket.id}`);
   }

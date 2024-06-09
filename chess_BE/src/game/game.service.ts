@@ -11,9 +11,8 @@ export class GameService {
     return await this.prismaService.GetMods();
   }
 
-  async CreateRoom(socket: Socket) {
+  async CreateRoom() {
     const roomID = randomUUID();
-    socket.emit('roomCreated', { roomID });
     console.log(roomID)
     return roomID
   }

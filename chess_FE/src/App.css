@@ -161,6 +161,22 @@ nav {
   margin-top: 1%;
 }
 
+main {
+  display: flex;
+  width: 100%;
+}
+
+.board {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.info,
+.board,
+.settings {
+  width: 28%;
+}
+
 input {
   color: black;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -267,6 +283,14 @@ button {
   background-color: rgba(100, 100, 100);
   width: 100%;
   height: auto;
+}
+
+.Moves_Table {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: rgba(100, 100, 100);
+  width: 100%;
 }
 
 thead {
