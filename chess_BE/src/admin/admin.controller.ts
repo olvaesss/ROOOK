@@ -1,42 +1,38 @@
-import { Controller, Delete, Get, Post, Put } from "@nestjs/common";
+import { Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
 import { AdminService } from "./admin.service";
 // import { isAdmin } from "./isAdmin.decorator";
 
 @Controller('/admin')
 export class AdminController{
-    constructor(adminService:AdminService){
+    constructor(private adminService:AdminService){
         
     }
 
-    // @isAdmin()
-    @Get(':id')
-    GetAdminData(){
-        return {}
+    @Get('/news')
+    async GetNewsRequest(){
+        return await this.adminService.getNewsRequests()
     }
 
-    @Get('')
-    GetNews(){
-        return {}
+    @Get('/players')
+    async GetPlayers(){
+        return await this.adminService.getUsers()
     }
 
-    @Get('')
-    GetPlayers(){
-        return {}
+    @Put('/approve/:id')
+    async ApproveNews(@Param() id:any){
+        return await this.adminService.ApproveNews(Number(id.id))
     }
 
-    // @isAdmin()
-    @Post('')
-    AproveNews(){
-        return {}
+    @Delete('/:id')
+    async DeleteUser(@Param() id:any){
+        return await this.adminService.deleteUser(Number(id.id))
     }
 
-    // @isAdmin()
-    @Delete('')
-    DeleteNews(){
-        return {}
+    @Delete("reject/:id")
+    async Reject(@Param() id:any){
+        return await this.adminService.reject(Number(id.id))
     }
 
-    // @isAdmin()
     @Put()
     Update(){
         return {}

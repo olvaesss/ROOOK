@@ -19,6 +19,17 @@ export class PrismaService {
     }
   }
 
+  async getUsers(){
+    try {
+      const data = await this.prisma.player.findMany()
+      console.log(data)
+      return data
+    } catch (err) {
+      console.log(err)
+      return null
+    }
+  }
+
   async getMatches(Name:string){
     try {
       let Matches =[]
@@ -55,9 +66,9 @@ export class PrismaService {
     }
   }
 
-  async deleteUser(Player:Player){
+  async deleteUser(data:number){
     try {
-      await this.prisma.player.delete({where:{ID_PLAYER:Player.ID_PLAYER}})
+      await this.prisma.player.delete({where:{ID_PLAYER:data}})
     } catch (err) {
       console.log(err)
       return false
@@ -67,6 +78,7 @@ export class PrismaService {
   async updateUser(Player:Player){
     try {
       await this.prisma.player.update({where:{ID_PLAYER:Player.ID_PLAYER},data:Player})
+      return true
     } catch (err) {
       console.log(err)
       return false
@@ -75,6 +87,24 @@ export class PrismaService {
   get client() {
     return this.prisma;
   }
+
+  async ApproveNews(data:number){
+    try {
+      await this.prisma.news.update({where:{ID_NEWS:data},data:{APPROVE:true}})
+    } catch (err) {
+      console.log(err)
+      return false
+    }
+  }
+
+async Reject(data:number){
+  try {
+    await this.prisma.news.delete({where:{ID_NEWS:data}})
+  } catch (err) {
+    console.log(err)
+    return false
+  }
+}
 
   async createNews(data:News){
     try {
@@ -89,9 +119,18 @@ export class PrismaService {
 
   async getAllNews(){
     try {
-      const NEWS = await this.prisma.news.findMany()
-      console.log(NEWS)
+      const NEWS = await this.prisma.news.findMany({where:{APPROVE:true}})
       return NEWS
+    } catch (err) {
+      console.log(err)
+      return null
+    }
+  }
+
+  async getNewsRequests(){
+    try {
+      const data = await this.prisma.news.findMany({where:{APPROVE:false}})
+      return data
     } catch (err) {
       console.log(err)
       return null
@@ -136,6 +175,7 @@ export class PrismaService {
   async getLearnById(data:any){
     try {
       const learn = await this.prisma.learn.findFirst({where:{ID_LEARN:data}})
+      return learn
     } catch (err) {
       console.log(err)
       return null

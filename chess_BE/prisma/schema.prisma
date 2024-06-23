@@ -36,6 +36,7 @@ model News {
   TITLE      String
   HREF       String
   IMAGE      String
+  APPROVE    Boolean  @default(false)
   CREATEDATE DateTime
 }
 

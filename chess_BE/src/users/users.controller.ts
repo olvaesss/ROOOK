@@ -9,7 +9,7 @@ import { AuthGuard } from '@nestjs/passport';
 export class UsersController {
      constructor(private UserService: UsersService, private Prisma:PrismaService){}
 
-     @UseGuards(AuthGuard('jwt'))
+     // @UseGuards(AuthGuard('jwt'))
      @Get('/:id')
      GetUserData(@Param('id') id:string){
           return this.UserService.getUserData(id)

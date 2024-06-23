@@ -177,6 +177,11 @@ main {
   width: 28%;
 }
 
+.NewsConfirm_Table,
+.Players_Table {
+  width: 100%;
+}
+
 input {
   color: black;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -199,6 +204,11 @@ button {
 .MainComponent {
   margin-top: 2%;
   display: flex;
+}
+
+.LearningContainer {
+  margin-left: 2%;
+  text-align: left;
 }
 
 .logotype {

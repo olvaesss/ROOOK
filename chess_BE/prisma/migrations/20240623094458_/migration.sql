@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "News" ADD COLUMN     "APPROVE" BOOLEAN NOT NULL DEFAULT false;

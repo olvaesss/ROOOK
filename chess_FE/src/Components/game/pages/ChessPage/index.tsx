@@ -12,6 +12,15 @@ import GameBoard from '../../components/GameBoard';
 import Timer from '../../components/Timer';
 import Modal from '../../components/Modal';
 import StatusBar from '../../components/StatusBar';
+import { io } from 'socket.io-client';
+
+const socket = io('http://localhost:3001', {
+	transports: ['websocket'],
+	extraHeaders: {
+		'Access-Control-Allow-Origin': '*',
+		'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+	}
+});
 
 const ChessPage: React.FC = observer(() => {
 	// store
@@ -41,6 +50,8 @@ const ChessPage: React.FC = observer(() => {
 	}
 
 	function swapPlayer() {
+		let move = store.moves[store.moves.length - 1]
+		socket.emit("move", move)
 		store.setCurrentPlayer(currentPlayer?.color === Colors.WHITE ? blackPlayer : whitePlayer);
 	}
 

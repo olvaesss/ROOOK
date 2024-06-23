@@ -8,11 +8,12 @@ async function bootstrap() {
   const corsOptions: CorsOptions = {
     origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    allowedHeaders: '*, Authorization',
+    allowedHeaders: '*',
     preflightContinue: false,
     optionsSuccessStatus: 204,
   };
   app.enableCors(corsOptions) 
+  console.log("server running on port", PORT)
   await app.listen(PORT)
 }
 bootstrap();

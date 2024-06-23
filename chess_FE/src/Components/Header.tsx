@@ -35,7 +35,7 @@ export default function App() {
           <Route path="*" element={<Path404 />} />
           <Route path="/account/register" element={<Register />} />
           <Route path="/account/login" element={<Login />} />
-          <Route path="/admin/:id" element={<Admin />} />
+          <Route path="/admin/" element={<Admin />} />
         </Routes>
       </div>
     </Router>
@@ -47,7 +47,7 @@ function Header() {
     <div className="Header">
       <Link className="Logo" to="/">
         <img src="/images/logo.png" alt="" className="logotype" />
-        <h1>ROOK Chess</h1></Link>
+        <h1>ChessTraining</h1></Link>
       <Navigate />
     </div>
   );

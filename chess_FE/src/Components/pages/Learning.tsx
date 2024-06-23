@@ -39,10 +39,11 @@ const Learning = () => {
                         <div className="LearningContainer">
                             {data.titles.map((title, index) => (
                                 <div key={index} className='LearnComponent'>
-                                    <img src={data.images[index]} alt={`Изображение ${index}`} className="text-image" /> {/* Добавлен вывод изображений */}
                                     <div>
                                         <h2>{title}</h2>
-                                        <p>{data.text[index]}</p>
+                                        <div>
+                                            <p>{data.text[index]}</p>
+                                        </div>
                                         <Link to={`/learn/${data.id[index]}`}><button>Пордробнее</button></Link>
                                     </div>
                                 </div>

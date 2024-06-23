@@ -8,10 +8,7 @@ export class LearnService{
     }
 
     async getById(data:string){
-        const title = await this.prisma.getLearnById(Number(data))
-        const text = ''
-        const video = ''
-        const images = []
-        return {data,text, title, video, images}
+        const learn = await this.prisma.getLearnById(Number(data))
+        return learn
     }
 }
